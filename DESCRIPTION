@@ -4,7 +4,8 @@ Title: Generates messages with facts sourced from the Wikipedia main page
 Version: 0.1.0
 Authors@R: person("Keith", "McNulty", email = "keith.mcnulty@gmail.com",
                   role = c("aut", "cre"))
-Description: Creates messages containing random facts from the Wikipedia hompage.  Intended to keep users interested during long waiting periods.
+Description: Creates messages containing random facts from the Wikipedia hompage.  
+  Intended to keep users interested during long waiting periods.
 License: Creative Commons Attribution-ShareAlike 4.0 International Public License
 Encoding: UTF-8
 LazyData: true
