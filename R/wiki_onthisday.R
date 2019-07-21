@@ -8,7 +8,7 @@ wiki_onthisday <- function() {
   input <- "https://en.wikipedia.org/wiki/Main_Page"
   wiki_page <- xml2::read_html(input, fill = TRUE)
 
-  # scrape data from any sortable table
+  # scrape list data
   otd <- wiki_page %>%
     rvest::html_nodes(xpath = '//*[@id="mp-otd"]') %>%
     rvest::html_nodes("li") %>%
@@ -16,8 +16,6 @@ wiki_onthisday <- function() {
 
   otd <- otd[grepl("^\\d{4}", otd)] %>%
     sample(1)
-
-
 
   paste("Did you know that on this day in", otd, "(Courtesy of Wikipedia)") %>%
     message()

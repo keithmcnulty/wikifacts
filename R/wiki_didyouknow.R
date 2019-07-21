@@ -9,7 +9,7 @@ wiki_didyouknow <- function() {
   input <- "https://en.wikipedia.org/wiki/Main_Page"
   wiki_page <- xml2::read_html(input, fill = TRUE)
 
-  # scrape data from any sortable table
+  # scrape list data
   dyk <- wiki_page %>%
     rvest::html_nodes(xpath = '//*[@id="mp-dyk"]') %>%
     rvest::html_nodes("li") %>%
@@ -17,8 +17,6 @@ wiki_didyouknow <- function() {
 
   dyk <- dyk[grepl("... that", dyk)] %>%
     sample(1)
-
-
 
   paste("Did you know", gsub("\\.\\.\\. ", "", dyk), "(Courtesy of Wikipedia)") %>%
     message()
