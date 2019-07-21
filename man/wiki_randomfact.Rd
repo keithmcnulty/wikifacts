@@ -12,3 +12,6 @@ A message with a random item from Wikipedia's main page
 \description{
 Generate random fact
 }
+\examples{
+wiki_randomfact()
+}

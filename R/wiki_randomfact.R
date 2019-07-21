@@ -1,6 +1,8 @@
 #' Generate random fact
 #'
 #' @return A message with a random item from Wikipedia's main page
+#'
+#' @examples wiki_randomfact()
 
 wiki_randomfact <- function() {
 

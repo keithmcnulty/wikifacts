@@ -1,6 +1,8 @@
 #' Generate random news item
 #'
 #' @return A message with a random 'in the news' item from Wikipedia's main page
+#'
+#' @examples wiki_inthenews()
 
 wiki_inthenews <- function() {
 

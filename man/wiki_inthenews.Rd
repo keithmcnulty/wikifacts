@@ -12,3 +12,6 @@ A message with a random 'in the news' item from Wikipedia's main page
 \description{
 Generate random news item
 }
+\examples{
+wiki_inthenews()
+}

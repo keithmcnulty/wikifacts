@@ -12,3 +12,6 @@ A message with a random 'on this day' fact from Wikipedia's main page
 \description{
 Generate random 'on this day' fact
 }
+\examples{
+wiki_onthisday()
+}

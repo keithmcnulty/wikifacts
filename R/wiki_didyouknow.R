@@ -1,6 +1,8 @@
 #' Generate random 'did you know' fact
 #'
 #' @return A message with a random 'did you know' fact from Wikipedia's main page
+#'
+#' @examples wiki_didyouknow()
 
 
 wiki_didyouknow <- function() {

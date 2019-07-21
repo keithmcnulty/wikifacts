@@ -1,6 +1,8 @@
 #' Generate random 'on this day' fact
 #'
 #' @return A message with a random 'on this day' fact from Wikipedia's main page
+#'
+#' @examples wiki_onthisday()
 
 wiki_onthisday <- function() {
 

@@ -12,3 +12,6 @@ A message with a random 'did you know' fact from Wikipedia's main page
 \description{
 Generate random 'did you know' fact
 }
+\examples{
+wiki_didyouknow()
+}
