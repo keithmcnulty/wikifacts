@@ -30,3 +30,7 @@ Did you know that on this day in 1982 – Members of the Provisional Irish Repub
 
 ```
 
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/keithmcnulty/wikifacts.svg?branch=master)](https://travis-ci.org/keithmcnulty/wikifacts)
+<!-- badges: end -->
+

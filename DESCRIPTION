@@ -6,7 +6,7 @@ Authors@R: person("Keith", "McNulty", email = "keith.mcnulty@gmail.com",
                   role = c("aut", "cre"))
 Description: Creates messages containing random facts from the Wikipedia hompage.  
   Intended to keep users interested during long waiting periods.
-License: Creative Commons Attribution-ShareAlike 4.0 International Public License
+License: CC0
 Encoding: UTF-8
 LazyData: true
 Imports:
