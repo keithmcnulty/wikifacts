@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/keithmcnulty/wikifacts.svg?branch=master)](https://travis-ci.org/keithmcnulty/wikifacts)
+<!-- badges: end -->
+
 # wikifacts
 R package which generates messages containing random facts from Wikipedia.  Intended for light-hearted support for scripts or apps that take a long time to execute.
 
@@ -30,7 +34,5 @@ Did you know that on this day in 1982 – Members of the Provisional Irish Repub
 
 ```
 
-<!-- badges: start -->
-[![Travis build status](https://travis-ci.org/keithmcnulty/wikifacts.svg?branch=master)](https://travis-ci.org/keithmcnulty/wikifacts)
-<!-- badges: end -->
+
 
