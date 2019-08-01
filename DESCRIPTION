@@ -1,7 +1,7 @@
 Package: wikifacts
 Type: Package
 Title: Generates Messages with Facts Sourced from the Wikipedia Main Page
-Version: 0.1.0
+Version: 0.1.9000
 Authors@R: person("Keith", "McNulty", email = "keith.mcnulty@gmail.com",
                   role = c("aut", "cre"))
 Description: Creates messages containing random facts from the Wikipedia homepage.  
