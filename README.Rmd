@@ -1,0 +1,80 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+```{r echo = FALSE, message = FALSE}
+library(dplyr)
+source("R/wiki_didyouknow.R")
+source("R/wiki_inthenews.R")
+source("R/wiki_onthisday.R")
+source("R/wiki_randomfact.R")
+```
+
+# wikifacts
+
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/keithmcnulty/wikifacts.svg?branch=master)](https://travis-ci.org/keithmcnulty/wikifacts)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build status](https://github.com/keithmcnulty/wikifacts/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/wikifacts/actions)
+<!-- badges: end -->
+
+R package which generates strings containing random facts from current or historic Wikipedia main pages.  Intended for light-hearted support for scripts or apps that take a long time to execute.
+
+## Installation
+
+You can install the released version of wikifacts from [CRAN](https://CRAN.R-project.org) with:
+
+``` {r eval = FALSE}
+install.packages("wikifacts")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` {r eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("keithmcnulty/wikifacts")
+```
+
+## Functionality
+
+- `wiki_didyouknow()` generates string with random 'did you know' fact from Wikipedia main page
+- `wiki_inthenews()` generates string with random 'in the news' fact from Wikipedia main page
+- `wiki_onthisday()` generates string with random 'on this day' fact from Wikipedia main page
+- `wiki_randomfact()` generates string with random fact from Wikipedia main page (one of the above selected randomly)
+
+## Examples
+
+``` {r}
+wiki_didyouknow() %>% cat()
+```
+
+``` {r}
+wiki_randomfact("2015-01-02") %>% cat()
+```
+
+Use with `cowsay`: 
+
+``` {r}
+cowsay::say(wiki_randomfact("2015-01-02"))
+```
+
+Generate a table of random facts by date (using `dplyr 1.0.0`):
+
+``` {r}
+date_tbl <- data.frame(date = seq(from = as.Date("2015-01-01"), to = as.Date("2015-01-14"), by = "days"))
+
+date_tbl %>% 
+  dplyr::rowwise() %>% 
+  dplyr::mutate(fact = wiki_randomfact(date))
+```

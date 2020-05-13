@@ -1,10 +1,10 @@
 Package: wikifacts
 Type: Package
-Title: Generates Messages with Facts Sourced from the Wikipedia Main Page
+Title: Generates Facts Sourced from the Wikipedia Main Page
 Version: 0.1.9000
 Authors@R: person("Keith", "McNulty", email = "keith.mcnulty@gmail.com",
                   role = c("aut", "cre"))
-Description: Creates messages containing random facts from the Wikipedia homepage.  
+Description: Displays random facts from the Wikipedia homepage.  
   Intended to keep users interested during long waiting periods.
 License: CC0
 Encoding: UTF-8
@@ -13,4 +13,4 @@ Imports:
     magrittr,
     rvest,
     xml2
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
