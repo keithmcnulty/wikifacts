@@ -7,11 +7,14 @@
 wiki_onthisday(date = Sys.Date())
 }
 \arguments{
-\item{date}{A date string of the form "%Y-%m-%d".  Default value is today's date.}
+\item{date}{A date string of the form YYYY-MM-DD.  Default value is today's date.}
 }
 \value{
 A string with a random 'on this day' fact from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
 }
 \description{
-Generate random 'on this day' fact from current or historic Wikipedia main page
+`wiki_onthisday()` generates a random 'on this day' fact from a current or historic Wikipedia main page
+}
+\examples{
+wiki_onthisday(date = '2020-05-02')
 }

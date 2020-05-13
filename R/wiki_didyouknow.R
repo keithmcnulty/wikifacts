@@ -1,9 +1,13 @@
 #' Generate random 'did you know' fact from current or historic Wikipedia main page.
 #'
-#' @return A string with a random 'did you know' fact from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
-#' @param date A date string of the form "%Y-%m-%d".  Default value is today's date.
+#' @description
+#' `wiki_didyouknow()` generates a random 'did you know' fact from a current or historic Wikipedia main page
 #'
-#' @examples wiki_didyouknow(date = "2020-05-02")
+#' @param date A date string of the form YYYY-MM-DD.  Default value is today's date.
+#' @return A string with a random 'did you know' fact from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
+#'
+#' @examples
+#' wiki_didyouknow(date = '2020-05-02')
 
 
 wiki_didyouknow <- function(date = Sys.Date()) {

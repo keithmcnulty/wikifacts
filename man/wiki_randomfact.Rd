@@ -7,14 +7,14 @@
 wiki_randomfact(date = Sys.Date())
 }
 \arguments{
-\item{date}{A date string of the form "%Y-%m-%d".  Default value is today's date.}
+\item{date}{A date string of the form YYYY-MM-DD.  Default value is today's date.}
 }
 \value{
 A string with a random item from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
 }
 \description{
-Generate random fact from current or historic Wikipedia main page
+`wiki_randomfact()` generates a random fact from a current or historic Wikipedia main page
 }
 \examples{
-wiki_randomfact(date = "2020-05-02")
+wiki_randomfact(date = '2020-05-02')
 }
