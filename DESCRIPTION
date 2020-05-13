@@ -1,7 +1,7 @@
 Package: wikifacts
 Type: Package
 Title: Generates Facts Sourced from the Wikipedia Main Page
-Version: 0.2
+Version: 0.2.9000
 Authors@R: person("Keith", "McNulty", email = "keith.mcnulty@gmail.com",
                   role = c("aut", "cre"))
 Description: Displays random facts from the Wikipedia homepage.  
