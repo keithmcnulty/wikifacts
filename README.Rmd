@@ -28,6 +28,7 @@ source("R/wiki_randomfact.R")
 [![R build status](https://github.com/keithmcnulty/wikifacts/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/wikifacts/actions)
 [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/wikifacts?color=green)](https://cran.r-project.org/package=wikifacts)
 [![CRAN status](https://www.r-pkg.org/badges/version/wikifacts)](https://CRAN.R-project.org/package=wikifacts)
+[![Travis build status](https://travis-ci.com/keithmcnulty/wikifacts.svg?branch=master)](https://travis-ci.com/keithmcnulty/wikifacts)
 <!-- badges: end -->
 
 R package which generates strings containing random facts from current or historic Wikipedia main pages.  Intended for light-hearted support for scripts or apps that take a long time to execute.
