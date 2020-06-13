@@ -2,19 +2,23 @@
 % Please edit documentation in R/wiki_inthenews.R
 \name{wiki_inthenews}
 \alias{wiki_inthenews}
-\title{Generate random news item from current or historic Wikipedia main page.}
+\title{Generate random news items from current or historic Wikipedia main page.}
 \usage{
-wiki_inthenews(date = Sys.Date())
+wiki_inthenews(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE)
 }
 \arguments{
-\item{date}{A date string of the form YYYY-MM-DD.  Default value is today's date.}
+\item{n_facts}{An integer determining the number of facts that will be generated, up to a limit of the maximum facts for the date specified.}
+
+\item{date}{A date string of the form YYYY-MM-DD.  Default value is yesterday's date.}
+
+\item{bare_fact}{Logical.  Determining whether the fact should be quoted as is or surrounded by a preamble and courtesy statement.}
 }
 \value{
-A string with a random 'in the news' item from Wikipedia's main page, if it exists for the date specified - otherwise "I got nothin'"
+A vector of strings with random 'in the news' items from Wikipedia's main page, if it exists for the date specified - otherwise "I got nothin'"
 }
 \description{
-`wiki_inthenews()` generates a random news item from a current or historic Wikipedia main page
+`wiki_inthenews()` generates random news items from a current or historic Wikipedia main page
 }
 \examples{
-wiki_inthenews(date = '2020-05-02')
+wiki_inthenews(n_facts = 1, date = '2020-05-02')
 }

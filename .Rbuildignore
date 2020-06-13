@@ -5,3 +5,4 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^README\.Rmd$
+^codecov\.yml$

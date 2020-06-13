@@ -15,6 +15,8 @@ Downloads](http://cranlogs.r-pkg.org/badges/grand-total/wikifacts?color=green)](
 status](https://www.r-pkg.org/badges/version/wikifacts)](https://CRAN.R-project.org/package=wikifacts)
 [![Travis build
 status](https://travis-ci.com/keithmcnulty/wikifacts.svg?branch=master)](https://travis-ci.com/keithmcnulty/wikifacts)
+[![Codecov test
+coverage](https://codecov.io/gh/keithmcnulty/wikifacts/branch/master/graph/badge.svg)](https://codecov.io/gh/keithmcnulty/wikifacts?branch=master)
 <!-- badges: end -->
 
 R package which generates strings containing random facts from current
@@ -39,34 +41,33 @@ devtools::install_github("keithmcnulty/wikifacts")
 
 ## Functionality
 
-  - `wiki_didyouknow()` generates string with random ‘did you know’ fact
-    from Wikipedia main page
-  - `wiki_inthenews()` generates string with random ‘in the news’ fact
-    from Wikipedia main page
-  - `wiki_onthisday()` generates string with random ‘on this day’ fact
-    from Wikipedia main page
-  - `wiki_randomfact()` generates string with random fact from Wikipedia
-    main page (one of the above selected randomly)
+  - `wiki_didyouknow()` generates random ‘did you know’ facts from
+    Wikipedia main page
+  - `wiki_inthenews()` generates srandom ‘in the news’ facts from
+    Wikipedia main page
+  - `wiki_onthisday()` generates random ‘on this day’ facts from
+    Wikipedia main page
+  - `wiki_randomfact()` generates random facts from Wikipedia main page
 
 ## Examples
 
 ``` r
 wiki_didyouknow() %>% cat()
-#> Did you know that investigative journalist Jessica Lussenhop has written articles on corruption in the standardized-testing industry, and the murders and disappearances of Indigenous women? (Courtesy of Wikipedia)
+#> Did you know that Blackrocks Brewery was created by two unemployed pharmaceutical salesmen? (Courtesy of Wikipedia)
 ```
 
 ``` r
-wiki_randomfact("2015-01-02") %>% cat()
-#> Did you know that on January 2 in 1971 – At Ibrox Park in Glasgow, Scotland, 66 people were killed in a stampede during an Old Firm football match. (Courtesy of Wikipedia)
+wiki_randomfact() %>% cat()
+#> Did you know that the 12th-century Eadwine Psalter has a famous portrait of Eadwine, "prince of scribes" (pictured), and illustrations to the psalms copied from a book then over 300 years old? (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
 
 ``` r
-cowsay::say(wiki_randomfact("2015-01-02"))
+cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Did you know that Peter Moore announced Grand Theft Auto IV by rolling up his sleeve to reveal a tattoo of the logo? (Courtesy of Wikipedia on 02 January 2015) 
+#> Here's some news from 04 December 2016. Magnus Carlsen defeats Sergey Karjakin to retain the World Chess Championship title. (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -84,31 +85,18 @@ cowsay::say(wiki_randomfact("2015-01-02"))
 #> 
 ```
 
-Generate a table of random facts by date (using
-`dplyr 1.0.0`):
+Generate multiple random facts:
 
 ``` r
-date_tbl <- data.frame(date = seq(from = as.Date("2015-01-01"), to = as.Date("2015-01-14"), by = "days"))
-
-date_tbl %>% 
-  dplyr::rowwise() %>% 
-  dplyr::mutate(fact = wiki_randomfact(date))
-#> # A tibble: 14 x 2
-#> # Rowwise: 
-#>    date       fact                                                              
-#>    <date>     <chr>                                                             
-#>  1 2015-01-01 "Did you know that when Bruckner's Pange lingua was published in …
-#>  2 2015-01-02 "Did you know that Jean-Claude Van Damme is returning in the rema…
-#>  3 2015-01-03 "Did you know that the ring-tailed ground squirrel is more dainty…
-#>  4 2015-01-04 "Did you know that the Armenian liberal daily Aravot was prevente…
-#>  5 2015-01-05 "Here was some news on 05 January 2015. Italian ferry Norman Atla…
-#>  6 2015-01-06 "Here was some news on 06 January 2015. At least 36 people are ki…
-#>  7 2015-01-07 "Did you know that the Egyptian pharaoh Seti II was buried in tom…
-#>  8 2015-01-08 "Here was some news on 08 January 2015. Angola, Malaysia, New Zea…
-#>  9 2015-01-09 "Here was some news on 09 January 2015. At least 36 people are ki…
-#> 10 2015-01-10 "Did you know that Independence Blue Cross CEO Daniel J. Hilferty…
-#> 11 2015-01-11 "Here was some news on 11 January 2015. French police free hostag…
-#> 12 2015-01-12 "Did you know that painter Theora Hamblett was one of the first M…
-#> 13 2015-01-13 "Did you know that approximately 28,000 topographic names were ch…
-#> 14 2015-01-14 "Did you know that on January 14 in 1301 – The Árpád dynasty, whi…
+wiki_randomfact(n_facts = 10, bare_fact = TRUE)
+#>  [1] "... that facing the rise of Nazi ideology, Otto Riethmüller compiled the song \"Sonne der Gerechtigkeit\" for young people from hymns by three authors of two earlier centuries?"                                                        
+#>  [2] "1981 – English serial killer Peter Sutcliffe, the \"Yorkshire Ripper\", was arrested in Sheffield, ending one of the largest police investigations in British history."                                                                  
+#>  [3] "... that Hancock Bridge in Mumbai, built in 1879 and rebuilt in 1923, was demolished in 2016 to be rebuilt again?"                                                                                                                       
+#>  [4] "... that Jamaica High School (pictured), once Queens' largest public high school with 4,613 students, closed in 2014 with a graduating class of only 24 students?"                                                                       
+#>  [5] "1947 – A commission led by Cyril Radcliffe established the Radcliffe Line, the border between India and Pakistan after the Partition of India."                                                                                          
+#>  [6] "1917 – Being unable to resolve disputes with Eddie Livingstone, owner of the Toronto Blueshirts, the other ice hockey clubs of Canada's National Hockey Association officially agreed to break away and form the National Hockey League."
+#>  [7] "1975 – The AH-64 Apache, the primary attack helicopter for a number of countries, made its first flight."                                                                                                                                
+#>  [8] "Serzh Sargsyan  resigns as Prime Minister of Armenia, following large-scale protests."                                                                                                                                                   
+#>  [9] "1946 – Named after Bikini Atoll, the site of the nuclear weapons test Operation Crossroads in the Marshall Islands, the modern bikini was introduced at a fashion show in Paris."                                                        
+#> [10] "Taiwan becomes the first state in Asia to legalize same-sex marriage."
 ```
