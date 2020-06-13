@@ -1,6 +1,6 @@
 # wikifacts 0.2.9000
 
-* Generate multiple facts within functions
+* Generate multiple facts within functions (#5)
 * Move default date to yesterday to avoid timezone issues
 * Add ability to display bare facts without cosmetic wrapping
 * Add ability for `wiki_randomfact()` to select the type of fact to randomize
