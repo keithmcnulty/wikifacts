@@ -47,17 +47,18 @@ devtools::install_github("keithmcnulty/wikifacts")
   - `wiki_onthisday()` generates random ‘on this day’ facts from
     Wikipedia main page
   - `wiki_randomfact()` generates random facts from Wikipedia main page
+  - `wiki_search()` launches browser with Wikipedia search results
 
 ## Examples
 
 ``` r
 wiki_didyouknow() %>% cat()
-#> Did you know that William G. King Jr. explored and surveyed islands where downrange stations were subsequently established as part of the Eastern Test Range? (Courtesy of Wikipedia)
+#> Did you know that Blackrocks Brewery was created by two unemployed pharmaceutical salesmen? (Courtesy of Wikipedia)
 ```
 
 ``` r
 wiki_randomfact() %>% cat()
-#> Did you know that the success of the U.S. Auto Defense Choc was based on prepacked equipment? (Courtesy of Wikipedia)
+#> Here's some news from 05 May 2019. An earthquake in Luzon, the Philippines, kills at least 18 people. (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
@@ -66,7 +67,7 @@ Use with `cowsay`:
 cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Here's some news from 14 December 2019. In a non-binding referendum, Bougainville votes for independence from Papua New Guinea. (Courtesy of Wikipedia) 
+#> Here's some news from 02 November 2017. In New York City, a ramming attack (vehicle pictured) kills eight people and injures at least eleven others. (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -88,14 +89,20 @@ Generate multiple random facts:
 
 ``` r
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
-#>  [1] "... that around the turn of the 20th century, New Jersey amber was burned for heat in the winter?"                                                                                                                     
-#>  [2] "Yvonne Farrell and Shelley McNamara win the Pritzker Architecture Prize."                                                                                                                                              
-#>  [3] "... that although its discoverer committed suicide after it was declared a forgery in 1883, the Shapira Scroll may be a Dead Sea Scroll after all?"                                                                    
-#>  [4] "1941 – Adolf Hitler ordered the suspension of the T4 euthanasia program of the mentally ill and disabled, although killings continued in secret for the remainder of the war."                                         
-#>  [5] "... that David A. Cooper diagnosed the first case of HIV in Australia?"                                                                                                                                                
-#>  [6] "... that the fossil elm Ulmus okanaganensis had been tentatively identified as two other plants before it was formally described in 2005?"                                                                             
-#>  [7] "The Airlander 10 hybrid airship – the largest aircraft flying today – completes its maiden civilian voyage."                                                                                                           
-#>  [8] "An earthquake in Luzon, the Philippines, kills at least 16 people."                                                                                                                                                    
-#>  [9] "In Canadian football, the Ottawa Redblacks defeat the Calgary Stampeders to win the Grey Cup."                                                                                                                         
-#> [10] "1927 – Louis B. Mayer, head of Metro-Goldwyn-Mayer invited 36 people involved in the film industry to a banquet, where he announced the creation of what would become the Academy of Motion Picture Arts and Sciences."
+#>  [1] "The wreck of Argentinian submarine San Juan, which disappeared in November 2017, is found in the South Atlantic."                                                                                           
+#>  [2] "1842 – American Indian Wars: American general William J. Worth declared the Second Seminole War to be over."                                                                                                
+#>  [3] "... that Kavya Manyapu led the development of a dust-repelling fabric for space suits using carbon nanotubes?"                                                                                              
+#>  [4] "Cyberattacks on Ukraine spread a new variant of the Petya malware (ransom note pictured) around the world and cause severe disruptions."                                                                    
+#>  [5] "... that Green Bay Packers defensive tackle Dave Roller, who weighed 270 pounds (120 kg) at the time, was carried off Lambeau Field by fans after a victory against the Detroit Lions?"                     
+#>  [6] "... that Elad Chakrina initially won Mayotte's 1st constituency by 12 votes, lost by 54 votes after a counting error was corrected, then forced a by-election after an appeal?"                             
+#>  [7] "... that director and screenwriter Travis Stevens paused renovations on his house to film Girl on the Third Floor?"                                                                                         
+#>  [8] "1952 – The Congress of Guatemala passed Decree 900, redistributing unused lands of sizes greater than 224 acres (0.9 km2) to local peasants and having a major effect on the nation's land reform movement."
+#>  [9] "... that Prisoners of the Sun—​the fourteenth volume of The Adventures of Tintin—​was made into a musical in 2001?"                                                                                           
+#> [10] "... that the 2018 teen drama Skate Kitchen was partly filmed with a camera mounted on a motorized skateboard deck traveling at speeds of up to 20 miles per hour (32 km/h)?"
+```
+
+Search Wikipedia (launches browser with results):
+
+``` r
+wiki_search('R (programming language)')
 ```

@@ -5,6 +5,7 @@
 * Add ability to display bare facts without cosmetic wrapping
 * Add ability for `wiki_randomfact()` to select the type of fact to randomize
 * Remove date argument from `wiki_randomfact()`
+* Add `wiki_search()`
 
 # wikifacts 0.2
 

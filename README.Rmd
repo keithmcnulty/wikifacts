@@ -19,6 +19,7 @@ source("R/wiki_didyouknow.R")
 source("R/wiki_inthenews.R")
 source("R/wiki_onthisday.R")
 source("R/wiki_randomfact.R")
+source("R/wiki_search.R")
 ```
 
 # wikifacts <img src="wikifacts.png" align="right" width="200"/>
@@ -55,6 +56,7 @@ devtools::install_github("keithmcnulty/wikifacts")
 - `wiki_inthenews()` generates srandom 'in the news' facts from Wikipedia main page
 - `wiki_onthisday()` generates random 'on this day' facts from Wikipedia main page
 - `wiki_randomfact()` generates random facts from Wikipedia main page
+- `wiki_search()` launches browser with Wikipedia search results
 
 ## Examples
 
@@ -77,4 +79,10 @@ Generate multiple random facts:
 ``` {r}
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
 
+```
+
+Search Wikipedia (launches browser with results):
+
+```{r}
+wiki_search('R (programming language)')
 ```
