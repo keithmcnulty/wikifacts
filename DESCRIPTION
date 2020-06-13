@@ -5,7 +5,7 @@ Version: 0.3.0
 Authors@R: 
     person(given = "Keith",
            family = "McNulty",
-           role = "aut",
+           role = c("aut", "cre"),
            email = "keith.mcnulty@gmail.com",
            comment = c(ORCID = "0000-0002-2332-1654"))
 Description: Displays random facts from the Wikipedia homepage.  
