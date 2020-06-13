@@ -2,8 +2,12 @@ Package: wikifacts
 Type: Package
 Title: Generates Facts Sourced from the Wikipedia Main Page
 Version: 0.3.0
-Authors@R: person("Keith", "McNulty", email = "keith.mcnulty@gmail.com",
-                  role = c("aut", "cre"))
+Authors@R: 
+    person(given = "Keith",
+           family = "McNulty",
+           role = "aut",
+           email = "keith.mcnulty@gmail.com",
+           comment = c(ORCID = "0000-0002-2332-1654"))
 Description: Displays random facts from the Wikipedia homepage.  
 License: CC0
 Encoding: UTF-8
