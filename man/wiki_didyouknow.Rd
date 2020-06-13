@@ -2,7 +2,7 @@
 % Please edit documentation in R/wiki_didyouknow.R
 \name{wiki_didyouknow}
 \alias{wiki_didyouknow}
-\title{Generate random 'did you know' facts from current or historic Wikipedia main page.}
+\title{Generate 'did you know' facts from the Wikipedia main page on a specified date.}
 \usage{
 wiki_didyouknow(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE)
 }
@@ -17,7 +17,7 @@ wiki_didyouknow(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE)
 A vector of strings with random 'did you know' facts from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
 }
 \description{
-`wiki_didyouknow()` generates random 'did you know' facts from a current or historic Wikipedia main page
+`wiki_didyouknow()` generates 'did you know' facts from the Wikipedia main page on a specified date.
 }
 \examples{
 wiki_didyouknow(n_facts = 2, date = '2020-05-02')

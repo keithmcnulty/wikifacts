@@ -21,7 +21,7 @@ source("R/wiki_onthisday.R")
 source("R/wiki_randomfact.R")
 ```
 
-# wikifacts
+# wikifacts <img src="wikifacts.png" align="right" width="200"/>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -32,7 +32,7 @@ source("R/wiki_randomfact.R")
 [![Codecov test coverage](https://codecov.io/gh/keithmcnulty/wikifacts/branch/master/graph/badge.svg)](https://codecov.io/gh/keithmcnulty/wikifacts?branch=master)
 <!-- badges: end -->
 
-R package which generates strings containing random facts from current or historic Wikipedia main pages.  Intended for light-hearted support for scripts or apps that take a long time to execute.
+R package which generates random facts from historic Wikipedia main pages. 
 
 ## Installation
 

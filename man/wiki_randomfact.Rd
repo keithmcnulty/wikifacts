@@ -2,7 +2,7 @@
 % Please edit documentation in R/wiki_randomfact.R
 \name{wiki_randomfact}
 \alias{wiki_randomfact}
-\title{Generate random facts from current or historic Wikipedia main pages}
+\title{Generate random facts from historic Wikipedia main pages}
 \usage{
 wiki_randomfact(
   n_facts = 1L,
@@ -24,7 +24,7 @@ wiki_randomfact(
 A vector of strings with random items from Wikipedia's main page - otherwise "I got nothin'"
 }
 \description{
-`wiki_randomfact()` generates random facts from current or historic Wikipedia main pages after 1 January 2015.
+`wiki_randomfact()` generates random facts from Wikipedia main pages after 1 January 2015.
 }
 \examples{
 wiki_randomfact()

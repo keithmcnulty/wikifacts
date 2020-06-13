@@ -2,7 +2,7 @@
 % Please edit documentation in R/wiki_onthisday.R
 \name{wiki_onthisday}
 \alias{wiki_onthisday}
-\title{Generate random 'on this day' facts from current or historic Wikipedia main page}
+\title{Generate 'on this day' facts from the Wikipedia main page on a specified date.}
 \usage{
 wiki_onthisday(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE)
 }
@@ -17,7 +17,7 @@ wiki_onthisday(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE)
 A vector of strings with random 'on this day' facts from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
 }
 \description{
-`wiki_onthisday()` generates random 'on this day' facts from a current or historic Wikipedia main page
+`wiki_onthisday()` generates 'on this day' facts from the Wikipedia main page on a specified date.
 }
 \examples{
 wiki_onthisday(date = '2020-05-02')

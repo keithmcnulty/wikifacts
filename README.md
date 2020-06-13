@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# wikifacts
+# wikifacts <img src="wikifacts.png" align="right" width="200"/>
 
 <!-- badges: start -->
 
@@ -19,9 +19,8 @@ status](https://travis-ci.com/keithmcnulty/wikifacts.svg?branch=master)](https:/
 coverage](https://codecov.io/gh/keithmcnulty/wikifacts/branch/master/graph/badge.svg)](https://codecov.io/gh/keithmcnulty/wikifacts?branch=master)
 <!-- badges: end -->
 
-R package which generates strings containing random facts from current
-or historic Wikipedia main pages. Intended for light-hearted support for
-scripts or apps that take a long time to execute.
+R package which generates random facts from historic Wikipedia main
+pages.
 
 ## Installation
 
@@ -53,12 +52,12 @@ devtools::install_github("keithmcnulty/wikifacts")
 
 ``` r
 wiki_didyouknow() %>% cat()
-#> Did you know that Blackrocks Brewery was created by two unemployed pharmaceutical salesmen? (Courtesy of Wikipedia)
+#> Did you know that William G. King Jr. explored and surveyed islands where downrange stations were subsequently established as part of the Eastern Test Range? (Courtesy of Wikipedia)
 ```
 
 ``` r
 wiki_randomfact() %>% cat()
-#> Did you know that the 12th-century Eadwine Psalter has a famous portrait of Eadwine, "prince of scribes" (pictured), and illustrations to the psalms copied from a book then over 300 years old? (Courtesy of Wikipedia)
+#> Did you know that the success of the U.S. Auto Defense Choc was based on prepacked equipment? (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
@@ -67,7 +66,7 @@ Use with `cowsay`:
 cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Here's some news from 04 December 2016. Magnus Carlsen defeats Sergey Karjakin to retain the World Chess Championship title. (Courtesy of Wikipedia) 
+#> Here's some news from 14 December 2019. In a non-binding referendum, Bougainville votes for independence from Papua New Guinea. (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -89,14 +88,14 @@ Generate multiple random facts:
 
 ``` r
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
-#>  [1] "... that facing the rise of Nazi ideology, Otto Riethmüller compiled the song \"Sonne der Gerechtigkeit\" for young people from hymns by three authors of two earlier centuries?"                                                        
-#>  [2] "1981 – English serial killer Peter Sutcliffe, the \"Yorkshire Ripper\", was arrested in Sheffield, ending one of the largest police investigations in British history."                                                                  
-#>  [3] "... that Hancock Bridge in Mumbai, built in 1879 and rebuilt in 1923, was demolished in 2016 to be rebuilt again?"                                                                                                                       
-#>  [4] "... that Jamaica High School (pictured), once Queens' largest public high school with 4,613 students, closed in 2014 with a graduating class of only 24 students?"                                                                       
-#>  [5] "1947 – A commission led by Cyril Radcliffe established the Radcliffe Line, the border between India and Pakistan after the Partition of India."                                                                                          
-#>  [6] "1917 – Being unable to resolve disputes with Eddie Livingstone, owner of the Toronto Blueshirts, the other ice hockey clubs of Canada's National Hockey Association officially agreed to break away and form the National Hockey League."
-#>  [7] "1975 – The AH-64 Apache, the primary attack helicopter for a number of countries, made its first flight."                                                                                                                                
-#>  [8] "Serzh Sargsyan  resigns as Prime Minister of Armenia, following large-scale protests."                                                                                                                                                   
-#>  [9] "1946 – Named after Bikini Atoll, the site of the nuclear weapons test Operation Crossroads in the Marshall Islands, the modern bikini was introduced at a fashion show in Paris."                                                        
-#> [10] "Taiwan becomes the first state in Asia to legalize same-sex marriage."
+#>  [1] "... that around the turn of the 20th century, New Jersey amber was burned for heat in the winter?"                                                                                                                     
+#>  [2] "Yvonne Farrell and Shelley McNamara win the Pritzker Architecture Prize."                                                                                                                                              
+#>  [3] "... that although its discoverer committed suicide after it was declared a forgery in 1883, the Shapira Scroll may be a Dead Sea Scroll after all?"                                                                    
+#>  [4] "1941 – Adolf Hitler ordered the suspension of the T4 euthanasia program of the mentally ill and disabled, although killings continued in secret for the remainder of the war."                                         
+#>  [5] "... that David A. Cooper diagnosed the first case of HIV in Australia?"                                                                                                                                                
+#>  [6] "... that the fossil elm Ulmus okanaganensis had been tentatively identified as two other plants before it was formally described in 2005?"                                                                             
+#>  [7] "The Airlander 10 hybrid airship – the largest aircraft flying today – completes its maiden civilian voyage."                                                                                                           
+#>  [8] "An earthquake in Luzon, the Philippines, kills at least 16 people."                                                                                                                                                    
+#>  [9] "In Canadian football, the Ottawa Redblacks defeat the Calgary Stampeders to win the Grey Cup."                                                                                                                         
+#> [10] "1927 – Louis B. Mayer, head of Metro-Goldwyn-Mayer invited 36 people involved in the film industry to a banquet, where he announced the creation of what would become the Academy of Motion Picture Arts and Sciences."
 ```

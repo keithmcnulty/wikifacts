@@ -2,7 +2,7 @@
 % Please edit documentation in R/wiki_inthenews.R
 \name{wiki_inthenews}
 \alias{wiki_inthenews}
-\title{Generate random news items from current or historic Wikipedia main page.}
+\title{Generate news items from the Wikipedia main page on a specified date.}
 \usage{
 wiki_inthenews(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE)
 }
@@ -17,7 +17,7 @@ wiki_inthenews(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE)
 A vector of strings with random 'in the news' items from Wikipedia's main page, if it exists for the date specified - otherwise "I got nothin'"
 }
 \description{
-`wiki_inthenews()` generates random news items from a current or historic Wikipedia main page
+`wiki_inthenews()` generates news items from the Wikipedia main page on a specified date.
 }
 \examples{
 wiki_inthenews(n_facts = 1, date = '2020-05-02')

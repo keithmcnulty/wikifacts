@@ -1,7 +1,7 @@
-#' Generate random 'on this day' facts from current or historic Wikipedia main page
+#' Generate 'on this day' facts from the Wikipedia main page on a specified date.
 #'
 #' @description
-#' `wiki_onthisday()` generates random 'on this day' facts from a current or historic Wikipedia main page
+#' `wiki_onthisday()` generates 'on this day' facts from the Wikipedia main page on a specified date.
 #'
 #' @param n_facts An integer determining the number of facts that will be generated, up to a limit of the maximum facts for the date specified.
 #' @param date A date string of the form YYYY-MM-DD.  Default value is yesterday's date.

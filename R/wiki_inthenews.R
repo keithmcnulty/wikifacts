@@ -1,7 +1,7 @@
-#' Generate random news items from current or historic Wikipedia main page.
+#' Generate news items from the Wikipedia main page on a specified date.
 #'
 #' @description
-#' `wiki_inthenews()` generates random news items from a current or historic Wikipedia main page
+#' `wiki_inthenews()` generates news items from the Wikipedia main page on a specified date.
 #'
 #' @param n_facts An integer determining the number of facts that will be generated, up to a limit of the maximum facts for the date specified.
 #' @param date A date string of the form YYYY-MM-DD.  Default value is yesterday's date.

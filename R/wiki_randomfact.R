@@ -1,7 +1,7 @@
-#' Generate random facts from current or historic Wikipedia main pages
+#' Generate random facts from historic Wikipedia main pages
 #'
 #' @description
-#' `wiki_randomfact()` generates random facts from current or historic Wikipedia main pages after 1 January 2015.
+#' `wiki_randomfact()` generates random facts from Wikipedia main pages after 1 January 2015.
 #'
 #' @param n_facts An integer determining the number of facts that will be generated.
 #' @param fact String to determine the type of fact to be randomly generated - "any" will generate a random selection.
