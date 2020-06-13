@@ -2,19 +2,30 @@
 % Please edit documentation in R/wiki_randomfact.R
 \name{wiki_randomfact}
 \alias{wiki_randomfact}
-\title{Generate random fact from current or historic Wikipedia main page}
+\title{Generate random facts from current or historic Wikipedia main pages}
 \usage{
-wiki_randomfact(date = Sys.Date())
+wiki_randomfact(
+  n_facts = 1L,
+  fact = c("any", "didyouknow", "onthisday", "inthenews"),
+  bare_fact = FALSE,
+  repeats = TRUE
+)
 }
 \arguments{
-\item{date}{A date string of the form YYYY-MM-DD.  Default value is today's date.}
+\item{n_facts}{An integer determining the number of facts that will be generated.}
+
+\item{fact}{String to determine the type of fact to be randomly generated - "any" will generate a random selection.}
+
+\item{bare_fact}{Logical.  Determining whether the fact should be quoted as is or surrounded by a preamble and courtesy statement.}
+
+\item{repeats}{Logical.  Determining if repeat facts should be permitted.  If FALSE the number of facts may be less than requested.}
 }
 \value{
-A string with a random item from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
+A vector of strings with random items from Wikipedia's main page - otherwise "I got nothin'"
 }
 \description{
-`wiki_randomfact()` generates a random fact from a current or historic Wikipedia main page
+`wiki_randomfact()` generates random facts from current or historic Wikipedia main pages after 1 January 2015.
 }
 \examples{
-wiki_randomfact(date = '2020-05-02')
+wiki_randomfact()
 }

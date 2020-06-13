@@ -2,19 +2,23 @@
 % Please edit documentation in R/wiki_didyouknow.R
 \name{wiki_didyouknow}
 \alias{wiki_didyouknow}
-\title{Generate random 'did you know' fact from current or historic Wikipedia main page.}
+\title{Generate random 'did you know' facts from current or historic Wikipedia main page.}
 \usage{
-wiki_didyouknow(date = Sys.Date())
+wiki_didyouknow(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE)
 }
 \arguments{
-\item{date}{A date string of the form YYYY-MM-DD.  Default value is today's date.}
+\item{n_facts}{An integer determining the number of facts that will be generated, up to a limit of the maximum facts for the date specified.}
+
+\item{date}{A date string of the form YYYY-MM-DD.  Default value is yesterday's date.}
+
+\item{bare_fact}{Logical.  Determining whether the fact should be quoted as is or surrounded by a preamble and courtesy statement.}
 }
 \value{
-A string with a random 'did you know' fact from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
+A vector of strings with random 'did you know' facts from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
 }
 \description{
-`wiki_didyouknow()` generates a random 'did you know' fact from a current or historic Wikipedia main page
+`wiki_didyouknow()` generates random 'did you know' facts from a current or historic Wikipedia main page
 }
 \examples{
-wiki_didyouknow(date = '2020-05-02')
+wiki_didyouknow(n_facts = 2, date = '2020-05-02')
 }

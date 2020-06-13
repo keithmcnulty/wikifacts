@@ -1,16 +1,19 @@
-#' Generate random 'did you know' fact from current or historic Wikipedia main page.
+#' Generate random 'did you know' facts from current or historic Wikipedia main page.
 #'
 #' @description
-#' `wiki_didyouknow()` generates a random 'did you know' fact from a current or historic Wikipedia main page
+#' `wiki_didyouknow()` generates random 'did you know' facts from a current or historic Wikipedia main page
 #'
-#' @param date A date string of the form YYYY-MM-DD.  Default value is today's date.
-#' @return A string with a random 'did you know' fact from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
+#' @param n_facts An integer determining the number of facts that will be generated, up to a limit of the maximum facts for the date specified.
+#' @param date A date string of the form YYYY-MM-DD.  Default value is yesterday's date.
+#' @param bare_fact Logical.  Determining whether the fact should be quoted as is or surrounded by a preamble and courtesy statement.
+#'
+#' @return A vector of strings with random 'did you know' facts from Wikipedia's main page if it exists for the date specified - otherwise "I got nothin'"
 #'
 #' @examples
-#' wiki_didyouknow(date = '2020-05-02')
+#' wiki_didyouknow(n_facts = 2, date = '2020-05-02')
 
 
-wiki_didyouknow <- function(date = Sys.Date()) {
+wiki_didyouknow <- function(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE) {
 
   # get url from input and read html
   date <- as.Date(date)
@@ -31,13 +34,15 @@ wiki_didyouknow <- function(date = Sys.Date()) {
       rvest::html_nodes("li") %>%
       rvest::html_text()
 
-    dyk <- dyk[grepl("... that", dyk)] %>%
-      sample(1)
+    n <- min(n_facts, length(dyk))
 
-    if (date == Sys.Date()) {
-      paste("Did you know", gsub("\\.\\.\\. ", "", dyk), "(Courtesy of Wikipedia)")
+    dyk <- dyk[grepl("... that", dyk)] %>%
+      sample(n)
+
+    if (bare_fact == TRUE) {
+      dyk
     } else {
-      paste0("Did you know ", gsub("\\.\\.\\. ", "", dyk), " (Courtesy of Wikipedia on ", format(date, "%d %B %Y"), ")")
+      paste0("Did you know ", gsub("\\.\\.\\. ", "", dyk), " (Courtesy of Wikipedia)")
     }
   },
   error = function (e) {"I got nothin'"},
