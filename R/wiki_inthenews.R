@@ -32,11 +32,12 @@ wiki_inthenews <- function(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALS
     itn <- wiki_page %>%
       rvest::html_nodes(xpath = '//*[@id="mp-itn"]') %>%
       rvest::html_nodes("li") %>%
-      rvest::html_text()
+      rvest::html_text() %>%
+      subset(nchar(.) > 40)
 
     n <- min(n_facts, length(itn))
 
-    itn <- itn[nchar(itn) > 40] %>%
+    itn <- itn %>%
       sample(n)
 
     if (bare_fact == TRUE) {

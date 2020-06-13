@@ -32,7 +32,8 @@ wiki_didyouknow <- function(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FAL
     dyk <- wiki_page %>%
       rvest::html_nodes(xpath = '//*[@id="mp-dyk"]') %>%
       rvest::html_nodes("li") %>%
-      rvest::html_text()
+      rvest::html_text() %>%
+      subset(grepl("... that", .))
 
     n <- min(n_facts, length(dyk))
 

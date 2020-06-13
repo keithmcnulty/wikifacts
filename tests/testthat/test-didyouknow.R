@@ -1,5 +1,5 @@
 test_that("wiki_didyouknow() generates a valid fact on yesterday's date", {
-  wiki_didyouknow(date = Sys.Date() - 1) %>%
+  wiki_didyouknow() %>%
     substr(., 1, 12) %>%
     testthat::expect_equal("Did you know")
 })
@@ -8,6 +8,13 @@ test_that("wiki_didyouknow() generates a valid fact on another valid date", {
   wiki_didyouknow(date = sample(seq(as.Date("2015-01-01"), Sys.Date() - 1, by = "day"), 1)) %>%
     substr(., 1, 12) %>%
     testthat::expect_equal("Did you know")
+})
+
+test_that("wiki_didyouknow() generates facts when asked for many", {
+  test <- wiki_didyouknow(n_facts = 20) %>%
+    subset(grepl("I got nothin'", .)) %>%
+    length() %>%
+    testthat::expect_equal(0)
 })
 
 test_that("wiki_didyouknow() fails in the expected way", {

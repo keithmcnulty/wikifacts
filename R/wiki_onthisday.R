@@ -31,11 +31,12 @@ wiki_onthisday <- function(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALS
     otd <- wiki_page %>%
       rvest::html_nodes(xpath = '//*[@id="mp-otd"]') %>%
       rvest::html_nodes("li") %>%
-      rvest::html_text()
+      rvest::html_text() %>%
+      subset(grepl("^\\d{3}", .))
 
     n <- min(n_facts, length(otd))
 
-    otd <- otd[grepl("^\\d{4}", otd)] %>%
+    otd <- otd%>%
       sample(n)
 
     if(bare_fact == TRUE) {

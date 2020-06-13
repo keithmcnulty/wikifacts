@@ -10,6 +10,13 @@ test_that("wiki_inthenews() generates a valid fact on another valid date", {
     testthat::expect_equal("Here's some news")
 })
 
+test_that("wiki_inthenews() generates facts when asked for many", {
+  test <- wiki_inthenews(n_facts = 20) %>%
+    subset(grepl("I got nothin'", .)) %>%
+    length() %>%
+    testthat::expect_equal(0)
+})
+
 test_that("wiki_inthenews() fails in the expected way", {
   wiki_inthenews(date = "1900-01-01") %>%
     testthat::expect_equal("I got nothin'")
