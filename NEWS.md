@@ -1,3 +1,7 @@
+# wikifacts 0.3.0.9000
+
+• Fix issue with non-English System locales (#8)
+
 # wikifacts 0.3.0
 
 ## New features
