@@ -14,11 +14,21 @@
 
 wiki_inthenews <- function(n_facts = 1L, date = Sys.Date() - 1, bare_fact = FALSE) {
 
+  locale <- Sys.getlocale("LC_TIME")
+
+  if (.Platform$OS.type == "windows") {
+    invisible(Sys.setlocale("LC_TIME", "English"))
+  } else {
+    invisible(Sys.setlocale("LC_TIME", "en_US.UTF-8"))
+  }
+
   # get url from input and read html
   date <- as.Date(date)
   date1 <- format(date, "%Y_%B_")
   date2 <- gsub("^0+", "", format(date, "%d"))
   date_str <- paste0(date1, date2)
+
+  invisible(Sys.setlocale("LC_TIME", locale))
 
   input <- paste0("https://en.wikipedia.org/wiki/Wikipedia:Main_Page_history/", date_str)
 

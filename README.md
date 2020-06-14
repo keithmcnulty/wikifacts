@@ -52,13 +52,13 @@ devtools::install_github("keithmcnulty/wikifacts")
 ## Examples
 
 ``` r
-wiki_didyouknow() %>% cat()
-#> Did you know that the song "Running", which was set to represent Cyprus in the Eurovision Song Contest 2020, was sung by a German-born singer of Greek and American ancestry? (Courtesy of Wikipedia)
+cat(wiki_didyouknow())
+#> Did you know that Fannie Flagg set her 2010 comedy-mystery novel I Still Dream About You in Birmingham, Alabama, because she wanted "to write a Valentine to my hometown"? (Courtesy of Wikipedia)
 ```
 
 ``` r
-wiki_randomfact() %>% cat()
-#> Did you know that on September 20 in 1906 – The ocean liner RMS Mauretania, the largest and fastest ship in the world at the time, was launched. (Courtesy of Wikipedia)
+cat(wiki_randomfact())
+#> Here's some news from 24 October 2019. In Santiago, Chile, protests over increased metro fares cause President Sebastián Piñera to declare a state of emergency. (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
@@ -67,7 +67,7 @@ Use with `cowsay`:
 cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Did you know that on June 8 in 1953 – Two tornadoes caused by the same storm killed more than 200 people in Flint, Michigan and Worcester, Massachusetts, cities more than 650 miles (1,050 km) apart. (Courtesy of Wikipedia) 
+#> Did you know that on July 10 in 1973 – John Paul Getty III, grandson of American oil magnate J. Paul Getty, was kidnapped in Rome. (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -89,16 +89,16 @@ Generate multiple random facts:
 
 ``` r
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
-#>  [1] "1745 – Bonnie Prince Charlie raised the Jacobite standard at Glenfinnan in the Scottish Highlands to begin the Second Jacobite Rising."                                                               
-#>  [2] "1234 – An Englishman lost the Battle of the Curragh in Ireland, at the same place where an Australian would win the 1297 Battle of Stirling Bridge in Scotland."                                      
-#>  [3] "1620 – The Mayflower Compact, the first governing document of the Plymouth Colony, was signed by 41 of the Mayflower's passengers while the ship was anchored in what is now Provincetown Harbor."    
-#>  [4] "1905 – Despite being blind in one eye, ice hockey player Frank McGee set the record for most goals in a Stanley Cup game when he scored 14 against the Dawson City Nuggets."                          
-#>  [5] "In Indonesia, flash floods in and around the capital of Jakarta kill at least 60 people."                                                                                                             
-#>  [6] "2005 – Terrorist suicide bombs exploded at two sites in Bali, Indonesia, killing twenty people and injuring over 120 others."                                                                         
-#>  [7] "... that Japanese singer Alisa Takigawa's debut song \"Season\" was originally a demo that was not intended to be her debut release?"                                                                 
-#>  [8] "... that production on the first season of The House of Flowers was shut down twice—after an earthquake injured one of the leads, and when a store objected to homosexual content being filmed there?"
-#>  [9] "... that while his parents wanted him to serve in the church, Albert Methfessel pursued his interest in music, becoming a key figure in German folk and male voice singing in the 19th century?"      
-#> [10] "... that Lindsay Peat has represented Ireland internationally at association football, basketball, and rugby union?"
+#>  [1] "French police free hostages from two buildings following a shooting at the headquarters of satirical magazine Charlie Hebdo in Paris."                                                                         
+#>  [2] "An explosion at Saint Mark's Coptic Orthodox Cathedral (pictured) in Cairo, Egypt, kills at least 25 people and injures many others."                                                                          
+#>  [3] "... that the conductor Michael Hofstetter has performed and recorded rarely played operas at the Ludwigsburg Festival, including Salieri's Les Danaïdes?"                                                      
+#>  [4] "Typhoon Lekima (satellite image shown) impacts the Philippines, the Ryukyu Islands, Taiwan and East China, killing at least 80 people."                                                                        
+#>  [5] "A suicide bombing after an Ariana Grande concert at the Manchester Arena in the United Kingdom kills 22 people and injures more than 100 others."                                                              
+#>  [6] "... that the Gateway Center shopping mall in Brooklyn, New York, is built on a former landfill?"                                                                                                               
+#>  [7] "1976 – The Teton Dam in eastern Idaho, US, collapsed as its reservoir was being filled for the first time, resulting in the deaths of eleven people and 13,000 cattle, and causing up to $2 billion in damage."
+#>  [8] "China and Pakistan announce the China–Pakistan Economic Corridor, a $46 billion project to connect Gwadar Port in Pakistan to Xinjiang in China."                                                              
+#>  [9] "In eSports, The International Dota 2 championships conclude with Wings Gaming defeating Digital Chaos in the final."                                                                                           
+#> [10] "The Cricket World Cup concludes with England defeating New Zealand in the final."
 ```
 
 Search Wikipedia (launches browser with results):

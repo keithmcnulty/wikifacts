@@ -61,11 +61,11 @@ devtools::install_github("keithmcnulty/wikifacts")
 ## Examples
 
 ``` {r}
-wiki_didyouknow() %>% cat()
+cat(wiki_didyouknow())
 ```
 
 ``` {r}
-wiki_randomfact() %>% cat()
+cat(wiki_randomfact())
 ```
 
 Use with `cowsay`: 
@@ -83,6 +83,6 @@ wiki_randomfact(n_facts = 10, bare_fact = TRUE)
 
 Search Wikipedia (launches browser with results):
 
-```{r}
+```{r eval = FALSE}
 wiki_search('R (programming language)')
 ```
