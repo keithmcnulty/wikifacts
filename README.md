@@ -7,12 +7,12 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R build
-status](https://github.com/keithmcnulty/wikifacts/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/wikifacts/actions)
-[![Total
-Downloads](http://cranlogs.r-pkg.org/badges/grand-total/wikifacts?color=green)](https://cran.r-project.org/package=wikifacts)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/wikifacts)](https://CRAN.R-project.org/package=wikifacts)
+[![Total
+Downloads](http://cranlogs.r-pkg.org/badges/grand-total/wikifacts?color=green)](https://cran.r-project.org/package=wikifacts)
+[![R build
+status](https://github.com/keithmcnulty/wikifacts/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/wikifacts/actions)
 [![Travis build
 status](https://travis-ci.com/keithmcnulty/wikifacts.svg?branch=master)](https://travis-ci.com/keithmcnulty/wikifacts)
 [![Codecov test
@@ -53,12 +53,12 @@ devtools::install_github("keithmcnulty/wikifacts")
 
 ``` r
 wiki_didyouknow() %>% cat()
-#> Did you know that Blackrocks Brewery was created by two unemployed pharmaceutical salesmen? (Courtesy of Wikipedia)
+#> Did you know that the song "Running", which was set to represent Cyprus in the Eurovision Song Contest 2020, was sung by a German-born singer of Greek and American ancestry? (Courtesy of Wikipedia)
 ```
 
 ``` r
 wiki_randomfact() %>% cat()
-#> Here's some news from 05 May 2019. An earthquake in Luzon, the Philippines, kills at least 18 people. (Courtesy of Wikipedia)
+#> Did you know that on September 20 in 1906 – The ocean liner RMS Mauretania, the largest and fastest ship in the world at the time, was launched. (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
@@ -67,7 +67,7 @@ Use with `cowsay`:
 cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Here's some news from 02 November 2017. In New York City, a ramming attack (vehicle pictured) kills eight people and injures at least eleven others. (Courtesy of Wikipedia) 
+#> Did you know that on June 8 in 1953 – Two tornadoes caused by the same storm killed more than 200 people in Flint, Michigan and Worcester, Massachusetts, cities more than 650 miles (1,050 km) apart. (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -89,16 +89,16 @@ Generate multiple random facts:
 
 ``` r
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
-#>  [1] "The wreck of Argentinian submarine San Juan, which disappeared in November 2017, is found in the South Atlantic."                                                                                           
-#>  [2] "1842 – American Indian Wars: American general William J. Worth declared the Second Seminole War to be over."                                                                                                
-#>  [3] "... that Kavya Manyapu led the development of a dust-repelling fabric for space suits using carbon nanotubes?"                                                                                              
-#>  [4] "Cyberattacks on Ukraine spread a new variant of the Petya malware (ransom note pictured) around the world and cause severe disruptions."                                                                    
-#>  [5] "... that Green Bay Packers defensive tackle Dave Roller, who weighed 270 pounds (120 kg) at the time, was carried off Lambeau Field by fans after a victory against the Detroit Lions?"                     
-#>  [6] "... that Elad Chakrina initially won Mayotte's 1st constituency by 12 votes, lost by 54 votes after a counting error was corrected, then forced a by-election after an appeal?"                             
-#>  [7] "... that director and screenwriter Travis Stevens paused renovations on his house to film Girl on the Third Floor?"                                                                                         
-#>  [8] "1952 – The Congress of Guatemala passed Decree 900, redistributing unused lands of sizes greater than 224 acres (0.9 km2) to local peasants and having a major effect on the nation's land reform movement."
-#>  [9] "... that Prisoners of the Sun—​the fourteenth volume of The Adventures of Tintin—​was made into a musical in 2001?"                                                                                           
-#> [10] "... that the 2018 teen drama Skate Kitchen was partly filmed with a camera mounted on a motorized skateboard deck traveling at speeds of up to 20 miles per hour (32 km/h)?"
+#>  [1] "1745 – Bonnie Prince Charlie raised the Jacobite standard at Glenfinnan in the Scottish Highlands to begin the Second Jacobite Rising."                                                               
+#>  [2] "1234 – An Englishman lost the Battle of the Curragh in Ireland, at the same place where an Australian would win the 1297 Battle of Stirling Bridge in Scotland."                                      
+#>  [3] "1620 – The Mayflower Compact, the first governing document of the Plymouth Colony, was signed by 41 of the Mayflower's passengers while the ship was anchored in what is now Provincetown Harbor."    
+#>  [4] "1905 – Despite being blind in one eye, ice hockey player Frank McGee set the record for most goals in a Stanley Cup game when he scored 14 against the Dawson City Nuggets."                          
+#>  [5] "In Indonesia, flash floods in and around the capital of Jakarta kill at least 60 people."                                                                                                             
+#>  [6] "2005 – Terrorist suicide bombs exploded at two sites in Bali, Indonesia, killing twenty people and injuring over 120 others."                                                                         
+#>  [7] "... that Japanese singer Alisa Takigawa's debut song \"Season\" was originally a demo that was not intended to be her debut release?"                                                                 
+#>  [8] "... that production on the first season of The House of Flowers was shut down twice—after an earthquake injured one of the leads, and when a store objected to homosexual content being filmed there?"
+#>  [9] "... that while his parents wanted him to serve in the church, Albert Methfessel pursued his interest in music, becoming a key figure in German folk and male voice singing in the 19th century?"      
+#> [10] "... that Lindsay Peat has represented Ireland internationally at association football, basketball, and rugby union?"
 ```
 
 Search Wikipedia (launches browser with results):
