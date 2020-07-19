@@ -1,6 +1,7 @@
-# wikifacts 0.3.0.9000
+# wikifacts 0.3.9000
 
 • Fix issue with non-English System locales (#8)
+* Adjust functions to remove reliance on yesterday's date as default (Wikipedia isn't always updated overnight)
 
 # wikifacts 0.3.0
 
