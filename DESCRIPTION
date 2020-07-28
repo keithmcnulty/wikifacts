@@ -1,6 +1,6 @@
 Package: wikifacts
 Type: Package
-Title: Generates Facts Sourced from the Wikipedia Main Page
+Title: Get facts and data from Wikipedia
 Version: 0.3.9000
 Authors@R: 
     person(given = "Keith",
@@ -8,15 +8,17 @@ Authors@R:
            role = c("aut", "cre"),
            email = "keith.mcnulty@gmail.com",
            comment = c(ORCID = "0000-0002-2332-1654"))
-Description: Displays random facts from the Wikipedia homepage.  
+Description: Query the Wikipedia knowledge graph and get facts from current and historic Wikipedia main pages.  
 License: CC0
 Encoding: UTF-8
 LazyData: true
 Imports:
-    magrittr,
+    dplyr (>= 1.0.0),
     rvest,
     xml2,
-    curl
+    curl,
+    stringr,
+    SPARQL
 RoxygenNote: 7.1.1
 Suggests: 
     testthat,
