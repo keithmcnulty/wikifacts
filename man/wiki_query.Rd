@@ -12,14 +12,13 @@ wiki_query(qry, raw_results = FALSE)
 \item{raw_results}{Logical.  If TRUE, the results of the query will not be cleaned to remove escaped quotes and language tags.}
 }
 \value{
-A dataframe of results
+A dataframe of result
 }
 \description{
 `wiki_query()` sends a SPARQL query to the Wikidata knowledge graph and collects the results in a dataframe.
 }
 \examples{
 # List five diseases
-library(SPARQL)
 query <- 'SELECT ?item ?itemLabel WHERE {
   ?item wdt:P31 wd:Q12136. #instance of disease
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
