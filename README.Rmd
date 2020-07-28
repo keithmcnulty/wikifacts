@@ -15,11 +15,6 @@ knitr::opts_chunk$set(
 
 ```{r echo = FALSE, message = FALSE}
 library(dplyr)
-source("R/wiki_didyouknow.R")
-source("R/wiki_inthenews.R")
-source("R/wiki_onthisday.R")
-source("R/wiki_randomfact.R")
-source("R/wiki_search.R")
 ```
 
 # wikifacts <img src="wikifacts.png" align="right" width="200"/>
@@ -33,7 +28,7 @@ source("R/wiki_search.R")
 [![Codecov test coverage](https://codecov.io/gh/keithmcnulty/wikifacts/branch/master/graph/badge.svg)](https://codecov.io/gh/keithmcnulty/wikifacts?branch=master)
 <!-- badges: end -->
 
-R package which generates random facts from historic Wikipedia main pages. 
+An R package which gets facts and data from Wikipedia and Wikibase. 
 
 ## Installation
 
@@ -52,13 +47,79 @@ devtools::install_github("keithmcnulty/wikifacts")
 
 ## Functionality
 
+- `wiki_query()` sends SPARQL queries to the Wikibase retrieves results in a dataframe.
 - `wiki_didyouknow()` generates random 'did you know' facts from Wikipedia main page
 - `wiki_inthenews()` generates srandom 'in the news' facts from Wikipedia main page
 - `wiki_onthisday()` generates random 'on this day' facts from Wikipedia main page
 - `wiki_randomfact()` generates random facts from Wikipedia main page
 - `wiki_search()` launches browser with Wikipedia search results
 
-## Examples
+## Examples - Query the Wikibase
+
+You can send SPARQL queries to Wikibase using `wiki_query()` and retrieve the results in a dataframe. If you have never queried Wikibase before, [here](https://query.wikidata.org/) is a good starting point to construct SPARQL queries and you can find lots of examples [here](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/queries/examples).
+
+In this example, a bar chart is created to show the top ten countries according to the number of cities with female mayors, according to data in Wikibase:
+
+```{r}
+library(wikifacts)
+library(ggplot2)
+
+mayor_query <- 'SELECT ?countryLabel (count(*) AS ?count)
+WHERE
+{
+	?city wdt:P31/wdt:P279* wd:Q515 . # find instances of subclasses of city
+	?city p:P6 ?statement .           # with a P6 (head of goverment) statement
+	?statement ps:P6 ?mayor .         # ... that has the value ?mayor
+	?mayor wdt:P21 wd:Q6581072 .      # ... where the ?mayor has P21 (sex or gender) female
+	FILTER NOT EXISTS { ?statement pq:P582 ?x }  # ... but the statement has no P582 (end date) qualifier
+	?city wdt:P17 ?country .          # Also find the country of the city
+ 	
+	# If available, get the "ru" label of the country, use "en" as fallback:
+	SERVICE wikibase:label {
+		bd:serviceParam wikibase:language "en" .
+	}
+}
+GROUP BY ?countryLabel
+ORDER BY DESC(?count)
+LIMIT 10'
+
+mayors <- wiki_query(mayor_query)
+
+ggplot(mayors, aes(x = count, y = reorder(countryLabel, count))) +
+  geom_bar(stat = "identity", fill = "lightblue") +
+  labs(x = "Cities with female mayors",
+       y = "",
+       title = "Top Ten Countries Based on Number Female Mayors",
+       caption = paste("Based on Wikipedia Data as of", format(Sys.Date(), "%d %B %Y")))
+
+```
+
+Or, a more darker topic, the top twenty countries by number of serial killers born there:
+
+```{r}
+serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE {
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+  ?human wdt:P106 wd:Q484188. # occupation serial killer
+  ?human wdt:P19 ?place_of_birth. # place of birth
+  ?place_of_birth wdt:P17 ?country . # in country
+}
+GROUP BY ?countryLabel
+ORDER BY DESC(?count)
+LIMIT 20'
+
+serialkillers <- wiki_query(serial_killers)
+
+ggplot(serialkillers, aes(x = count, y = reorder(countryLabel, count))) +
+  geom_bar(stat = "identity", fill = "darkred") +
+  labs(x = "Number of Serial Killers",
+       y = "",
+       title = "Top 20 Countries Based on Serial Killers Born There",
+       caption = paste("Based on Wikipedia Data as of", format(Sys.Date(), "%d %B %Y")))
+
+```
+
+
+## Examples - Retrieving facts from Wikipedia Main Pages
 
 ``` {r}
 cat(wiki_didyouknow())

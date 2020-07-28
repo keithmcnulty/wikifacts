@@ -1,6 +1,6 @@
 Package: wikifacts
 Type: Package
-Title: Get facts and data from Wikipedia
+Title: Get facts and data from Wikipedia and Wikibase
 Version: 0.3.9000
 Authors@R: 
     person(given = "Keith",
@@ -8,7 +8,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "keith.mcnulty@gmail.com",
            comment = c(ORCID = "0000-0002-2332-1654"))
-Description: Query the Wikipedia knowledge graph and get facts from current and historic Wikipedia main pages.  
+Description: Query Wikibase and get facts from current and historic Wikipedia main pages.  
 License: CC0
 Encoding: UTF-8
 LazyData: true
