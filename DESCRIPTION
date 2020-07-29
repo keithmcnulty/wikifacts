@@ -1,6 +1,6 @@
 Package: wikifacts
 Type: Package
-Title: Get facts and data from Wikipedia and Wikibase
+Title: Get Facts and Data from Wikipedia and Wikidata
 Version: 0.3.9000
 Authors@R: 
     person(given = "Keith",
@@ -8,20 +8,15 @@ Authors@R:
            role = c("aut", "cre"),
            email = "keith.mcnulty@gmail.com",
            comment = c(ORCID = "0000-0002-2332-1654"))
-Description: Query Wikibase and get facts from current and historic Wikipedia main pages.  
+Description: Query Wikidata and get facts from current and historic Wikipedia main pages.  
 License: CC0
 Encoding: UTF-8
 LazyData: true
 Imports:
-    dplyr (>= 1.0.0),
-    tidyselect (>= 1.1.0),
+    magrittr,
     rvest,
     xml2,
-    curl,
-    stringr,
-    SPARQL,
-    XML,
-    RCurl
+    curl
 RoxygenNote: 7.1.1
 Suggests: 
     testthat,

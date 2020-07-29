@@ -2,24 +2,22 @@
 % Please edit documentation in R/wiki_query.R
 \name{wiki_query}
 \alias{wiki_query}
-\title{Send queries to the Wikidata knowledge graph and receive results as dataframe.}
+\title{Send queries to Wikidata and receive results as dataframe}
 \usage{
-wiki_query(qry, raw_results = FALSE)
+wiki_query(qry)
 }
 \arguments{
-\item{qry}{A character string representing a SPARQL query to be run against the Wikidata knowledge graph.}
-
-\item{raw_results}{Logical.  If TRUE, the results of the query will not be cleaned to remove escaped quotes and language tags.}
+\item{qry}{A character string representing a SPARQL query to be sent to Wikidata}
 }
 \value{
-A dataframe of result
+A dataframe of results
 }
 \description{
-`wiki_query()` sends a SPARQL query to the Wikidata knowledge graph and collects the results in a dataframe.
+`wiki_query()` sends a SPARQL query to Wikidata and collects the results in a dataframe
 }
 \examples{
 # List five diseases
-query <- 'SELECT ?item ?itemLabel WHERE {
+query <- 'SELECT ?itemLabel WHERE {
   ?item wdt:P31 wd:Q12136. #instance of disease
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }

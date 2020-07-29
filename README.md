@@ -19,7 +19,7 @@ status](https://travis-ci.com/keithmcnulty/wikifacts.svg?branch=master)](https:/
 coverage](https://codecov.io/gh/keithmcnulty/wikifacts/branch/master/graph/badge.svg)](https://codecov.io/gh/keithmcnulty/wikifacts?branch=master)
 <!-- badges: end -->
 
-An R package which gets facts and data from Wikipedia and Wikibase.
+An R package which gets facts and data from Wikipedia and Wikidata.
 
 ## Installation
 
@@ -39,7 +39,7 @@ devtools::install_github("keithmcnulty/wikifacts")
 
 ## Functionality
 
-  - `wiki_query()` sends SPARQL queries to the Wikibase retrieves
+  - `wiki_query()` sends SPARQL queries to Wikidata and retrieves
     results in a dataframe.
   - `wiki_didyouknow()` generates random ‘did you know’ facts from
     Wikipedia main page
@@ -50,17 +50,17 @@ devtools::install_github("keithmcnulty/wikifacts")
   - `wiki_randomfact()` generates random facts from Wikipedia main page
   - `wiki_search()` launches browser with Wikipedia search results
 
-## Examples - Query the Wikibase
+## Examples - Query Wikidata
 
-You can send SPARQL queries to Wikibase using `wiki_query()` and
-retrieve the results in a dataframe. If you have never queried Wikibase
+You can send SPARQL queries to Wikidata using `wiki_query()` and
+retrieve the results in a dataframe. If you have never queried Wikidata
 before, [here](https://query.wikidata.org/) is a good starting point to
 construct SPARQL queries and you can find lots of examples
 [here](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/queries/examples).
 
 In this example, a bar chart is created to show the top ten countries
 according to the number of cities with female mayors, according to data
-in Wikibase:
+in Wikidata:
 
 ``` r
 library(wikifacts)
@@ -92,7 +92,7 @@ ggplot(mayors, aes(x = count, y = reorder(countryLabel, count))) +
   labs(x = "Cities with female mayors",
        y = "",
        title = "Top Ten Countries Based on Number Female Mayors",
-       caption = paste("Based on Wikipedia Data as of", format(Sys.Date(), "%d %B %Y")))
+       caption = paste("Based on Wikidata as of", format(Sys.Date(), "%d %B %Y")))
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
@@ -101,15 +101,17 @@ Or, a more darker topic, the top twenty countries by number of serial
 killers born there:
 
 ``` r
-serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE {
+serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE { # TEST
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-  ?human wdt:P106 wd:Q484188. # occupation serial killer
-  ?human wdt:P19 ?place_of_birth. # place of birth
-  ?place_of_birth wdt:P17 ?country . # in country
+  ?human wdt:P106 wd:Q484188. 
+  ?human wdt:P19 ?place_of_birth.
+  ?place_of_birth wdt:P17 ?country .
 }
 GROUP BY ?countryLabel
 ORDER BY DESC(?count)
 LIMIT 20'
+
+
 
 serialkillers <- wiki_query(serial_killers)
 
@@ -118,7 +120,7 @@ ggplot(serialkillers, aes(x = count, y = reorder(countryLabel, count))) +
   labs(x = "Number of Serial Killers",
        y = "",
        title = "Top 20 Countries Based on Serial Killers Born There",
-       caption = paste("Based on Wikipedia Data as of", format(Sys.Date(), "%d %B %Y")))
+       caption = paste("Based on Wikidata as of", format(Sys.Date(), "%d %B %Y")))
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
@@ -127,12 +129,12 @@ ggplot(serialkillers, aes(x = count, y = reorder(countryLabel, count))) +
 
 ``` r
 cat(wiki_didyouknow())
-#> Did you know that the Sunrise Ruby is the world's most expensive ruby, most expensive coloured gemstone, and most expensive gemstone other than a diamond? (Courtesy of Wikipedia)
+#> Did you know that Michael Boddenberg (pictured), the minister of finance of the German state of Hesse, once directed a school for butchers and bakers? (Courtesy of Wikipedia)
 ```
 
 ``` r
 cat(wiki_randomfact())
-#> Did you know that on June 26 in 1918 – World War I: The 26-day Battle of Belleau Wood near the Marne River in France ended with American forces finally clearing that forest of German troops. (Courtesy of Wikipedia)
+#> Did you know that on November 24 in 1542 – Anglo-Scottish Wars: England captured about 1,200 Scottish prisoners with its victory in the Battle of Solway Moss. (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
@@ -141,7 +143,7 @@ Use with `cowsay`:
 cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Did you know that on January 16 in 1938 – Benny Goodman (pictured) performed a concert at New York City's Carnegie Hall which has been considered instrumental in establishing jazz as a legitimate form of music. (Courtesy of Wikipedia) 
+#> Here's some news from 11 February 2016. A 6.4-magnitude earthquake strikes Taiwan, killing more than fifty people. (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -163,16 +165,16 @@ Generate multiple random facts:
 
 ``` r
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
-#>  [1] "... that the 2017–18 Thai temple fraud investigations, which led to the imprisonment of high-ranking Buddhist monks, were seen by critics as being politically motivated?"                           
-#>  [2] "... that the UK's Violet Friend anti-ballistic missile system was designed to use Bloodhound anti-aircraft missiles (example pictured) and radars to lower its cost?"                                
-#>  [3] "... that Philip Hugh-Jones coined the term type J diabetes, where J stands for Jamaica?"                                                                                                             
-#>  [4] "... that though in a romantic relationship since the 1990s, the titular characters of the 2018 X-Men miniseries Rogue & Gambit had never previously headlined a comic book together?"                
-#>  [5] "1965 – The \"glasnost meeting\" took place in Moscow, becoming the first demonstration in the Soviet Union after World War II and marking the beginning of the civil rights movement in the country."
-#>  [6] "1888 – The body of Mary Ann Nichols was found in Buck's Row, London, allegedly the first victim of the unidentified serial killer known as Jack the Ripper."                                         
-#>  [7] "... that the law center at Willamette University is named in honor of Oregon businessman and philanthropist Truman W. Collins?"                                                                      
-#>  [8] "1346 – King David II of Scotland, under the terms of the Auld Alliance with France, led an invasion of England during the Hundred Years' War, but was captured in the Battle of Neville's Cross."    
-#>  [9] "... that American Jewish cuisine has been influenced by a geographical gefilte fish line?"                                                                                                           
-#> [10] "... that tenor Thomas Mohr, who has sung the roles of Loge, Siegmund, and Siegfried in Der Ring in Minden, hosts concerts in his cowshed?"
+#>  [1] "1845 – German composer Felix Mendelssohn's Violin Concerto, one of the most popular violin concertos of all time, received its world première in Leipzig."                                      
+#>  [2] "2013 – A group of militants stormed a high-altitude mountaineering base camp in Gilgit–Baltistan, Pakistan, and killed 11 people; 10 climbers and one local guide."                             
+#>  [3] "... that Mount Harriet National Park in the Andaman Islands is a butterfly hotspot?"                                                                                                            
+#>  [4] "... that Lady Canning, India's first vicereine, has been described as one of the country's most memorable women botanical illustrators?"                                                        
+#>  [5] "1430 – Philip the Good established the Order of the Golden Fleece, referred to as the most prestigious, exclusive, and expensive order of chivalry in the world."                               
+#>  [6] "... that the human-like behaviour of Jenny (depicted), a resident of London Zoo, reinforced Charles Darwin's view that humans were \"created from animals\"?"                                   
+#>  [7] "In China, a new strain of coronavirus (examples pictured) infects more than a thousand people, killing at least forty-one."                                                                     
+#>  [8] "At the Grammy Awards in Los Angeles, Billie Eilish (pictured) wins the major categories of Best New Artist, and Song, Record, and Album of the Year."                                           
+#>  [9] "Vladimir Putin (pictured) is re-elected President of Russia."                                                                                                                                   
+#> [10] "2011 – Global demonstrations against economic inequality (protests in Madrid pictured), corporate influence on government, and other issues, were held in more than 950 cities in 82 countries."
 ```
 
 Search Wikipedia (launches browser with results):

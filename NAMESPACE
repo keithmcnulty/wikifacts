@@ -1,5 +1,5 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("utils", "browseURL")
 importFrom("utils", "URLencode")
-importFrom("dplyr", "%>%")
+importFrom("magrittr", "%>%")
 

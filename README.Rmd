@@ -28,7 +28,7 @@ library(dplyr)
 [![Codecov test coverage](https://codecov.io/gh/keithmcnulty/wikifacts/branch/master/graph/badge.svg)](https://codecov.io/gh/keithmcnulty/wikifacts?branch=master)
 <!-- badges: end -->
 
-An R package which gets facts and data from Wikipedia and Wikibase. 
+An R package which gets facts and data from Wikipedia and Wikidata. 
 
 ## Installation
 
@@ -47,18 +47,18 @@ devtools::install_github("keithmcnulty/wikifacts")
 
 ## Functionality
 
-- `wiki_query()` sends SPARQL queries to the Wikibase retrieves results in a dataframe.
+- `wiki_query()` sends SPARQL queries to Wikidata and retrieves results in a dataframe.
 - `wiki_didyouknow()` generates random 'did you know' facts from Wikipedia main page
 - `wiki_inthenews()` generates srandom 'in the news' facts from Wikipedia main page
 - `wiki_onthisday()` generates random 'on this day' facts from Wikipedia main page
 - `wiki_randomfact()` generates random facts from Wikipedia main page
 - `wiki_search()` launches browser with Wikipedia search results
 
-## Examples - Query the Wikibase
+## Examples - Query Wikidata
 
-You can send SPARQL queries to Wikibase using `wiki_query()` and retrieve the results in a dataframe. If you have never queried Wikibase before, [here](https://query.wikidata.org/) is a good starting point to construct SPARQL queries and you can find lots of examples [here](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/queries/examples).
+You can send SPARQL queries to Wikidata using `wiki_query()` and retrieve the results in a dataframe. If you have never queried Wikidata before, [here](https://query.wikidata.org/) is a good starting point to construct SPARQL queries and you can find lots of examples [here](https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/queries/examples).
 
-In this example, a bar chart is created to show the top ten countries according to the number of cities with female mayors, according to data in Wikibase:
+In this example, a bar chart is created to show the top ten countries according to the number of cities with female mayors, according to data in Wikidata:
 
 ```{r}
 library(wikifacts)
@@ -90,22 +90,24 @@ ggplot(mayors, aes(x = count, y = reorder(countryLabel, count))) +
   labs(x = "Cities with female mayors",
        y = "",
        title = "Top Ten Countries Based on Number Female Mayors",
-       caption = paste("Based on Wikipedia Data as of", format(Sys.Date(), "%d %B %Y")))
+       caption = paste("Based on Wikidata as of", format(Sys.Date(), "%d %B %Y")))
 
 ```
 
 Or, a more darker topic, the top twenty countries by number of serial killers born there:
 
 ```{r}
-serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE {
+serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE { # TEST
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-  ?human wdt:P106 wd:Q484188. # occupation serial killer
-  ?human wdt:P19 ?place_of_birth. # place of birth
-  ?place_of_birth wdt:P17 ?country . # in country
+  ?human wdt:P106 wd:Q484188. 
+  ?human wdt:P19 ?place_of_birth.
+  ?place_of_birth wdt:P17 ?country .
 }
 GROUP BY ?countryLabel
 ORDER BY DESC(?count)
 LIMIT 20'
+
+
 
 serialkillers <- wiki_query(serial_killers)
 
@@ -114,7 +116,7 @@ ggplot(serialkillers, aes(x = count, y = reorder(countryLabel, count))) +
   labs(x = "Number of Serial Killers",
        y = "",
        title = "Top 20 Countries Based on Serial Killers Born There",
-       caption = paste("Based on Wikipedia Data as of", format(Sys.Date(), "%d %B %Y")))
+       caption = paste("Based on Wikidata as of", format(Sys.Date(), "%d %B %Y")))
 
 ```
 
