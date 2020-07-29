@@ -1,5 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("utils", "browseURL")
 importFrom("utils", "URLencode")
+importFrom("utils", "read.csv")
 importFrom("magrittr", "%>%")
 
