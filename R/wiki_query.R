@@ -17,6 +17,11 @@
 
 wiki_query <- function(qry) {
 
+  # check the missing argument
+  if (missing(qry)) {
+    stop("No SPARQL query provided.")
+  }
+
   # constants
   LIMIT <- 2048
   WIKIDATA <- "https://query.wikidata.org/sparql"
@@ -28,10 +33,8 @@ wiki_query <- function(qry) {
   qry <- utils::URLencode(qry)
   qry <- gsub("#", "%23", qry)
 
-  # check SPARQL query length
-  if (!length(qry)) {
-    stop("No SPARQL query provided.")
-  } else if (length(qry) > LIMIT) {
+  # check SPARQL query length after the encoding
+  if (length(qry) > LIMIT) {
     stop(paste("Too long SPARQL query: maximum is", LIMIT, "characters"))
   }
 
@@ -44,7 +47,7 @@ wiki_query <- function(qry) {
   response <- tryCatch(
     utils::read.csv(spr, na.strings = "", encoding="UTF-8"),
     error = function(e) {
-      message(e)
+      message(paste(e))
       close(spr)
       return(data.frame())
     }
