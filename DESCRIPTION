@@ -1,13 +1,17 @@
 Package: wikifacts
 Type: Package
 Title: Get Facts and Data from Wikipedia and Wikidata
-Version: 0.3.9000
+Version: 0.4.9000
 Authors@R: 
-    person(given = "Keith",
+    c(person(given = "Keith",
            family = "McNulty",
            role = c("aut", "cre"),
            email = "keith.mcnulty@gmail.com",
-           comment = c(ORCID = "0000-0002-2332-1654"))
+           comment = c(ORCID = "0000-0002-2332-1654")),
+    person(given = "Petr",
+           family = "Kajzar",
+           role = c("ctb"),
+           email = "petr.kajzar@centrum.cz"))
 Description: Query Wikidata and get facts from current and historic Wikipedia main pages.  
 License: CC0
 Encoding: UTF-8

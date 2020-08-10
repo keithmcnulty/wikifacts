@@ -49,7 +49,7 @@ devtools::install_github("keithmcnulty/wikifacts")
 
 - `wiki_query()` sends SPARQL queries to Wikidata and retrieves results in a dataframe.
 - `wiki_didyouknow()` generates random 'did you know' facts from Wikipedia main page
-- `wiki_inthenews()` generates srandom 'in the news' facts from Wikipedia main page
+- `wiki_inthenews()` generates random 'in the news' facts from Wikipedia main page
 - `wiki_onthisday()` generates random 'on this day' facts from Wikipedia main page
 - `wiki_randomfact()` generates random facts from Wikipedia main page
 - `wiki_search()` launches browser with Wikipedia search results
@@ -94,14 +94,14 @@ ggplot(mayors, aes(x = count, y = reorder(countryLabel, count))) +
 
 ```
 
-Or, a more darker topic, the top twenty countries by number of serial killers born there:
+Or, a more dark topic, the top twenty countries by number of serial killers born there:
 
 ```{r}
-serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE { # TEST
+serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE { 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-  ?human wdt:P106 wd:Q484188. 
-  ?human wdt:P19 ?place_of_birth.
-  ?place_of_birth wdt:P17 ?country .
+  ?human wdt:P106 wd:Q484188. # occupation: serial killer
+  ?human wdt:P19 ?place_of_birth. # get place of birth
+  ?place_of_birth wdt:P17 ?country . # map to country
 }
 GROUP BY ?countryLabel
 ORDER BY DESC(?count)
