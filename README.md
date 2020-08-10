@@ -43,7 +43,7 @@ devtools::install_github("keithmcnulty/wikifacts")
     results in a dataframe.
   - `wiki_didyouknow()` generates random ‘did you know’ facts from
     Wikipedia main page
-  - `wiki_inthenews()` generates srandom ‘in the news’ facts from
+  - `wiki_inthenews()` generates random ‘in the news’ facts from
     Wikipedia main page
   - `wiki_onthisday()` generates random ‘on this day’ facts from
     Wikipedia main page
@@ -97,15 +97,15 @@ ggplot(mayors, aes(x = count, y = reorder(countryLabel, count))) +
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-Or, a more darker topic, the top twenty countries by number of serial
+Or, a more dark topic, the top twenty countries by number of serial
 killers born there:
 
 ``` r
-serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE { # TEST
+serial_killers <- 'SELECT ?countryLabel (COUNT(?human) AS ?count) WHERE { 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-  ?human wdt:P106 wd:Q484188. 
-  ?human wdt:P19 ?place_of_birth.
-  ?place_of_birth wdt:P17 ?country .
+  ?human wdt:P106 wd:Q484188. # occupation: serial killer
+  ?human wdt:P19 ?place_of_birth. # get place of birth
+  ?place_of_birth wdt:P17 ?country . # map to country
 }
 GROUP BY ?countryLabel
 ORDER BY DESC(?count)
@@ -129,12 +129,12 @@ ggplot(serialkillers, aes(x = count, y = reorder(countryLabel, count))) +
 
 ``` r
 cat(wiki_didyouknow())
-#> Did you know that Michael Boddenberg (pictured), the minister of finance of the German state of Hesse, once directed a school for butchers and bakers? (Courtesy of Wikipedia)
+#> Did you know that after Catholic bishop Gaston Marie Jacquier was assassinated in Algiers, Archbishop Duval ordered priests not to wear clerical clothing or display the cross in public? (Courtesy of Wikipedia)
 ```
 
 ``` r
 cat(wiki_randomfact())
-#> Did you know that on November 24 in 1542 – Anglo-Scottish Wars: England captured about 1,200 Scottish prisoners with its victory in the Battle of Solway Moss. (Courtesy of Wikipedia)
+#> Did you know that on January 10 in 1985 – Sir Clive Sinclair launched the Sinclair C5 personal electric vehicle, "one of the great marketing bombs of postwar British industry", which later became a cult collector's item. (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
@@ -143,7 +143,7 @@ Use with `cowsay`:
 cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Here's some news from 11 February 2016. A 6.4-magnitude earthquake strikes Taiwan, killing more than fifty people. (Courtesy of Wikipedia) 
+#> Here's some news from 02 August 2019. Incumbent President of Tunisia Beji Caid Essebsi dies at the age of 92, and Mohamed Ennaceur is named as his interim replacement. (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -165,16 +165,16 @@ Generate multiple random facts:
 
 ``` r
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
-#>  [1] "1845 – German composer Felix Mendelssohn's Violin Concerto, one of the most popular violin concertos of all time, received its world première in Leipzig."                                      
-#>  [2] "2013 – A group of militants stormed a high-altitude mountaineering base camp in Gilgit–Baltistan, Pakistan, and killed 11 people; 10 climbers and one local guide."                             
-#>  [3] "... that Mount Harriet National Park in the Andaman Islands is a butterfly hotspot?"                                                                                                            
-#>  [4] "... that Lady Canning, India's first vicereine, has been described as one of the country's most memorable women botanical illustrators?"                                                        
-#>  [5] "1430 – Philip the Good established the Order of the Golden Fleece, referred to as the most prestigious, exclusive, and expensive order of chivalry in the world."                               
-#>  [6] "... that the human-like behaviour of Jenny (depicted), a resident of London Zoo, reinforced Charles Darwin's view that humans were \"created from animals\"?"                                   
-#>  [7] "In China, a new strain of coronavirus (examples pictured) infects more than a thousand people, killing at least forty-one."                                                                     
-#>  [8] "At the Grammy Awards in Los Angeles, Billie Eilish (pictured) wins the major categories of Best New Artist, and Song, Record, and Album of the Year."                                           
-#>  [9] "Vladimir Putin (pictured) is re-elected President of Russia."                                                                                                                                   
-#> [10] "2011 – Global demonstrations against economic inequality (protests in Madrid pictured), corporate influence on government, and other issues, were held in more than 950 cities in 82 countries."
+#>  [1] "Mikhail Mishustin (pictured) is appointed Prime Minister of Russia following the resignation of Dmitry Medvedev and his cabinet."                               
+#>  [2] "2008 – Georgia launched a large-scale military offensive against the separatist region of South Ossetia, opening the six-day Russo-Georgian War."               
+#>  [3] "A total solar eclipse (pictured) crosses the contiguous United States for the first time since 1918."                                                           
+#>  [4] "... that at the age of 17, Esther Arditi saved a pilot and a navigator from a burning plane?"                                                                   
+#>  [5] "2009 – US Airways Flight 1549 struck a flock of Canada geese during its initial climb out from New York City and made an emergency landing in the Hudson River."
+#>  [6] "... that the Dutch letter is traditionally eaten in the Netherlands on Christmas Eve?"                                                                          
+#>  [7] "More than 70 people are killed in a suicide bombing and shooting in Quetta, Pakistan."                                                                          
+#>  [8] "Jair Bolsonaro (pictured) is elected President of Brazil."                                                                                                      
+#>  [9] "... that video game MeiQ: Labyrinth of Death features characters paired with robotic Guardians?"                                                                
+#> [10] "1862 – American Civil War: The Battle of Perryville, one of the bloodiest battles of the war, was fought in the Chaplin Hills west of Perryville, Kentucky."
 ```
 
 Search Wikipedia (launches browser with results):
