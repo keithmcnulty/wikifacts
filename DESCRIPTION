@@ -1,7 +1,7 @@
 Package: wikifacts
 Type: Package
 Title: Get Facts and Data from Wikipedia and Wikidata
-Version: 0.4.9000
+Version: 0.4.1
 Authors@R: 
     c(person(given = "Keith",
            family = "McNulty",

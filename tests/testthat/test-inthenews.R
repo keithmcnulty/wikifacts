@@ -1,14 +1,12 @@
 test_that("wiki_inthenews() generates a valid fact", {
   wiki_inthenews() %>%
-    substr(., 1, 16) %>%
-    testthat::expect_equal("Here's some news")
+    testthat::expect_type("character")
 })
 
 test_that("wiki_inthenews() generates facts when asked for many", {
-  test <- wiki_inthenews(n_facts = 20) %>%
-    subset(grepl("I got nothin'", .)) %>%
+  wiki_inthenews(n_facts = 20) %>%
     length() %>%
-    testthat::expect_equal(0)
+    testthat::expect_lte(20)
 })
 
 test_that("wiki_inthenews() fails in the expected way", {

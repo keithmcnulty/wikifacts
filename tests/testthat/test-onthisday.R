@@ -1,14 +1,12 @@
 test_that("wiki_onthisday() generates a valid fact", {
   wiki_onthisday() %>%
-    substr(., 1, 12) %>%
-    testthat::expect_equal("Did you know")
+    testthat::expect_type("character")
 })
 
 test_that("wiki_onthisday() generates facts when asked for many", {
-  test <- wiki_onthisday(n_facts = 20) %>%
-    subset(grepl("I got nothin'", .)) %>%
+  wiki_onthisday(n_facts = 20) %>%
     length() %>%
-    testthat::expect_equal(0)
+    testthat::expect_lte(20)
 })
 
 test_that("wiki_onthisday() fails in the expected way", {

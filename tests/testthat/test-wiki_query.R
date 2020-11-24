@@ -5,7 +5,9 @@ test_that("wiki_query() returns expected result", {
   }
   LIMIT 5'
 
-  wiki_query(query) %>%
-    nrow() %>%
-    testthat::expect_equal(5)
+  if(curl::has_internet() == TRUE) {
+    wiki_query(query) %>%
+      nrow() %>%
+      testthat::expect_equal(5)
+  }
 })

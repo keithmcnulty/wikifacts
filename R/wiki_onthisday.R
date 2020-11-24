@@ -46,7 +46,7 @@ wiki_onthisday <- function(n_facts = 1L, date = sample(seq(as.Date("2015-01-01")
 
     n <- min(n_facts, length(otd))
 
-    otd <- otd%>%
+    otd <- otd %>%
       sample(n)
 
     if(bare_fact == TRUE) {
