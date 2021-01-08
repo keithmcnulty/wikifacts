@@ -12,6 +12,6 @@
 #' wiki_search('R (programming language)')
 
 wiki_search <- function(term = NULL, browser = getOption("browser")) {
-  url <- paste0("https://en.wikipedia.org/wiki/", term)
+  url <- paste0("https://en.wikipedia.org/w/index.php?search=", utils::URLencode(term))
   browseURL(url, browser = browser)
 }
