@@ -41,14 +41,16 @@ devtools::install_github("keithmcnulty/wikifacts")
 
   - `wiki_query()` sends SPARQL queries to Wikidata and retrieves
     results in a dataframe.
+  - `wiki_define()` generates a short definition of the given terms
+    as an extract from Wikipedia article.
   - `wiki_didyouknow()` generates random ‘did you know’ facts from
-    Wikipedia main page
+    Wikipedia main page.
   - `wiki_inthenews()` generates random ‘in the news’ facts from
-    Wikipedia main page
+    Wikipedia main page.
   - `wiki_onthisday()` generates random ‘on this day’ facts from
-    Wikipedia main page
-  - `wiki_randomfact()` generates random facts from Wikipedia main page
-  - `wiki_search()` launches browser with Wikipedia search results
+    Wikipedia main page.
+  - `wiki_randomfact()` generates random facts from Wikipedia main page.
+  - `wiki_search()` launches browser with Wikipedia search results.
 
 ## Examples - Query Wikidata
 
