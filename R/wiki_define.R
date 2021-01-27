@@ -19,7 +19,7 @@
 wiki_define <- function(term = NULL, sentences = 5L) {
   if (!is.numeric(sentences)) {
 	sentences <- 10L
-	warning("'sentences' at wiki_define() should be an integerm falling back to 10L")
+	warning("'sentences' at wiki_define() should be an integer falling back to 10L")
   }
   sentences <- trunc(sentences)
   tryCatch({

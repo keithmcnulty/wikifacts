@@ -39,18 +39,19 @@ devtools::install_github("keithmcnulty/wikifacts")
 
 ## Functionality
 
-  - `wiki_query()` sends SPARQL queries to Wikidata and retrieves
+-   `wiki_query()` sends SPARQL queries to Wikidata and retrieves
     results in a dataframe.
-  - `wiki_define()` generates a short definition of the given terms
-    as an extract from Wikipedia article.
-  - `wiki_didyouknow()` generates random ‘did you know’ facts from
+-   `wiki_define()` generates a short definition of the given terms as
+    an extract from Wikipedia article.
+-   `wiki_didyouknow()` generates random ‘did you know’ facts from
     Wikipedia main page.
-  - `wiki_inthenews()` generates random ‘in the news’ facts from
+-   `wiki_inthenews()` generates random ‘in the news’ facts from
     Wikipedia main page.
-  - `wiki_onthisday()` generates random ‘on this day’ facts from
+-   `wiki_onthisday()` generates random ‘on this day’ facts from
     Wikipedia main page.
-  - `wiki_randomfact()` generates random facts from Wikipedia main page.
-  - `wiki_search()` launches browser with Wikipedia search results.
+-   `wiki_randomfact()` generates random facts from Wikipedia main page.
+-   `wiki_define()` obtains definitions of terms from Wikipedia.
+-   `wiki_search()` launches browser with Wikipedia search results.
 
 ## Examples - Query Wikidata
 
@@ -127,16 +128,39 @@ ggplot(serialkillers, aes(x = count, y = reorder(countryLabel, count))) +
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
+## Examples - Getting definitions of terms from Wikipedia
+
+``` r
+# Create animals dataframe
+animals <- data.frame(
+  name = c("kangaroo", "kookaburra", "wombat", "tasmanian devil", "quokka")
+)
+
+# get definitions from wikipedia
+knitr::kable(
+  animals %>% 
+    dplyr::mutate(definition = wiki_define(name, sentence = 1))
+)
+```
+
+| name            | definition                                                                                                                                                                                                            |
+|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| kangaroo        | The kangaroo is a marsupial from the family Macropodidae (macropods, meaning “large foot”).                                                                                                                           |
+| kookaburra      | Kookaburras are terrestrial tree kingfishers of the genus Dacelo native to Australia and New Guinea, which grow to between 28 and 42 centimetres (11 and 17 inches) in length and weigh around 300 grams (11 ounces). |
+| wombat          | Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.                                                                                                                               |
+| tasmanian devil | The Tasmanian devil (Sarcophilus harrisii) is a carnivorous marsupial of the family Dasyuridae.                                                                                                                       |
+| quokka          | The quokka, also known as the short-tailed scrub wallaby () (Setonix brachyurus), the only member of the genus Setonix, is a small macropod about the size of a domestic cat.                                         |
+
 ## Examples - Retrieving facts from Wikipedia Main Pages
 
 ``` r
 cat(wiki_didyouknow())
-#> Did you know that after Catholic bishop Gaston Marie Jacquier was assassinated in Algiers, Archbishop Duval ordered priests not to wear clerical clothing or display the cross in public? (Courtesy of Wikipedia)
+#> Did you know that Elsa Cavelti, who appeared in dramatic roles at the Opernhaus Zürich and taught voice at the Musikhochschule Frankfurt, was Wagner's Brangäne at La Scala? (Courtesy of Wikipedia)
 ```
 
 ``` r
 cat(wiki_randomfact())
-#> Did you know that on January 10 in 1985 – Sir Clive Sinclair launched the Sinclair C5 personal electric vehicle, "one of the great marketing bombs of postwar British industry", which later became a cult collector's item. (Courtesy of Wikipedia)
+#> Did you know that on April 26 in 1970 – The World Intellectual Property Organization came into being when its convention entered into force. (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
@@ -145,7 +169,7 @@ Use with `cowsay`:
 cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Here's some news from 02 August 2019. Incumbent President of Tunisia Beji Caid Essebsi dies at the age of 92, and Mohamed Ennaceur is named as his interim replacement. (Courtesy of Wikipedia) 
+#> Here's some news from 22 July 2015. The United States and Cuba restore full diplomatic relations after 54 years. (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -167,16 +191,16 @@ Generate multiple random facts:
 
 ``` r
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
-#>  [1] "Mikhail Mishustin (pictured) is appointed Prime Minister of Russia following the resignation of Dmitry Medvedev and his cabinet."                               
-#>  [2] "2008 – Georgia launched a large-scale military offensive against the separatist region of South Ossetia, opening the six-day Russo-Georgian War."               
-#>  [3] "A total solar eclipse (pictured) crosses the contiguous United States for the first time since 1918."                                                           
-#>  [4] "... that at the age of 17, Esther Arditi saved a pilot and a navigator from a burning plane?"                                                                   
-#>  [5] "2009 – US Airways Flight 1549 struck a flock of Canada geese during its initial climb out from New York City and made an emergency landing in the Hudson River."
-#>  [6] "... that the Dutch letter is traditionally eaten in the Netherlands on Christmas Eve?"                                                                          
-#>  [7] "More than 70 people are killed in a suicide bombing and shooting in Quetta, Pakistan."                                                                          
-#>  [8] "Jair Bolsonaro (pictured) is elected President of Brazil."                                                                                                      
-#>  [9] "... that video game MeiQ: Labyrinth of Death features characters paired with robotic Guardians?"                                                                
-#> [10] "1862 – American Civil War: The Battle of Perryville, one of the bloodiest battles of the war, was fought in the Chaplin Hills west of Perryville, Kentucky."
+#>  [1] "2492 BC – According to legend, Armenian culture hero Hayk slew the giant king Bel with a shot from a longbow near Lake Van (in modern Turkey)."                 
+#>  [2] "1816 – Sir John Barrow, secretary at the Admiralty, rejected a proposal to use Francis Ronalds's electrical telegraph, deeming it \"wholly unnecessary\"."      
+#>  [3] "1900 – FC Bayern Munich, Germany's most successful football club, was founded."                                                                                 
+#>  [4] "1882 – The Knights of Columbus, the world's largest Catholic fraternal service organization, was founded by Michael J. McGivney in New Haven, Connecticut, U.S."
+#>  [5] "... that the Memorial of the War to Resist US Aggression and Aid Korea has collected the names of 183,108 Chinese soldiers killed in the Korean War?"           
+#>  [6] "1945 – A parade to celebrate the end of World War II turned into a riot, followed by widespread disturbances and killings in and around Sétif, French Algeria." 
+#>  [7] "Magnus Carlsen  defeats Fabiano Caruana to retain the World Chess Championship."                                                                                
+#>  [8] "... that The Hammer of Thor by Rick Riordan won a Stonewall Book Award for its portrayal of the genderfluid character Alex Fierro?"                             
+#>  [9] "An overloaded tourist ferry capsizes in Lake Toba (pictured), Indonesia, killing at least 3 people and leaving 193 others missing."                             
+#> [10] "1138 – Lý Anh Tông was enthroned as emperor of Đại Việt at the age of two, starting a 37-year reign."
 ```
 
 Search Wikipedia (launches browser with results):

@@ -53,6 +53,7 @@ devtools::install_github("keithmcnulty/wikifacts")
 - `wiki_inthenews()` generates random 'in the news' facts from Wikipedia main page.
 - `wiki_onthisday()` generates random 'on this day' facts from Wikipedia main page.
 - `wiki_randomfact()` generates random facts from Wikipedia main page.
+- `wiki_define()` obtains definitions of terms from Wikipedia.
 - `wiki_search()` launches browser with Wikipedia search results.
 
 ## Examples - Query Wikidata
@@ -119,6 +120,21 @@ ggplot(serialkillers, aes(x = count, y = reorder(countryLabel, count))) +
        title = "Top 20 Countries Based on Serial Killers Born There",
        caption = paste("Based on Wikidata as of", format(Sys.Date(), "%d %B %Y")))
 
+```
+
+## Examples - Getting definitions of terms from Wikipedia
+
+```{r}
+# Create animals dataframe
+animals <- data.frame(
+  name = c("kangaroo", "kookaburra", "wombat", "tasmanian devil", "quokka")
+)
+
+# get definitions from wikipedia
+knitr::kable(
+  animals %>% 
+    dplyr::mutate(definition = wiki_define(name, sentence = 1))
+)
 ```
 
 
