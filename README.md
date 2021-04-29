@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/wikifacts)](https://CRAN.R-project.org/package=wikifacts)
 [![Total
@@ -143,24 +143,24 @@ knitr::kable(
 )
 ```
 
-| name            | definition                                                                                                                                                                                                            |
-|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| kangaroo        | The kangaroo is a marsupial from the family Macropodidae (macropods, meaning “large foot”).                                                                                                                           |
-| kookaburra      | Kookaburras are terrestrial tree kingfishers of the genus Dacelo native to Australia and New Guinea, which grow to between 28 and 42 centimetres (11 and 17 inches) in length and weigh around 300 grams (11 ounces). |
-| wombat          | Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.                                                                                                                               |
-| tasmanian devil | The Tasmanian devil (Sarcophilus harrisii) is a carnivorous marsupial of the family Dasyuridae.                                                                                                                       |
-| quokka          | The quokka, also known as the short-tailed scrub wallaby () (Setonix brachyurus), the only member of the genus Setonix, is a small macropod about the size of a domestic cat.                                         |
+| name            | definition                                                                                                                                                                                       |
+|:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| kangaroo        | The kangaroo is a marsupial from the family Macropodidae (macropods, meaning “large foot”).                                                                                                      |
+| kookaburra      | Kookaburras are terrestrial tree kingfishers of the genus Dacelo native to Australia and New Guinea, which grow to between 28 and 42 cm (11 and 17 in) in length and weigh around 300 g (11 oz). |
+| wombat          | Wombats are short-legged, muscular quadrupedal marsupials that are native to Australia.                                                                                                          |
+| tasmanian devil | The Tasmanian devil (Sarcophilus harrisii) is a carnivorous marsupial of the family Dasyuridae.                                                                                                  |
+| quokka          | The quokka, also known as the short-tailed scrub wallaby () (Setonix brachyurus), the only member of the genus Setonix, is a small macropod about the size of a domestic cat.                    |
 
 ## Examples - Retrieving facts from Wikipedia Main Pages
 
 ``` r
 cat(wiki_didyouknow())
-#> Did you know that Elsa Cavelti, who appeared in dramatic roles at the Opernhaus Zürich and taught voice at the Musikhochschule Frankfurt, was Wagner's Brangäne at La Scala? (Courtesy of Wikipedia)
+#> Did you know that in 2007, the Pennsylvania Supreme Court ruled that a sperm donor was not obligated to pay child support? (Courtesy of Wikipedia)
 ```
 
 ``` r
 cat(wiki_randomfact())
-#> Did you know that on April 26 in 1970 – The World Intellectual Property Organization came into being when its convention entered into force. (Courtesy of Wikipedia)
+#> Here's some news from 29 September 2016. Nobel Peace Prize-winning former Israeli President and Prime Minister Shimon Peres (pictured) dies at the age of 93. (Courtesy of Wikipedia)
 ```
 
 Use with `cowsay`:
@@ -169,7 +169,7 @@ Use with `cowsay`:
 cowsay::say(wiki_randomfact())
 #> 
 #>  -------------- 
-#> Here's some news from 22 July 2015. The United States and Cuba restore full diplomatic relations after 54 years. (Courtesy of Wikipedia) 
+#> Did you know that a DV4 electric dustcart (example pictured) continued to run after being hit by a bomb during the Second World War? (Courtesy of Wikipedia) 
 #>  --------------
 #>     \
 #>       \
@@ -191,16 +191,16 @@ Generate multiple random facts:
 
 ``` r
 wiki_randomfact(n_facts = 10, bare_fact = TRUE)
-#>  [1] "2492 BC – According to legend, Armenian culture hero Hayk slew the giant king Bel with a shot from a longbow near Lake Van (in modern Turkey)."                 
-#>  [2] "1816 – Sir John Barrow, secretary at the Admiralty, rejected a proposal to use Francis Ronalds's electrical telegraph, deeming it \"wholly unnecessary\"."      
-#>  [3] "1900 – FC Bayern Munich, Germany's most successful football club, was founded."                                                                                 
-#>  [4] "1882 – The Knights of Columbus, the world's largest Catholic fraternal service organization, was founded by Michael J. McGivney in New Haven, Connecticut, U.S."
-#>  [5] "... that the Memorial of the War to Resist US Aggression and Aid Korea has collected the names of 183,108 Chinese soldiers killed in the Korean War?"           
-#>  [6] "1945 – A parade to celebrate the end of World War II turned into a riot, followed by widespread disturbances and killings in and around Sétif, French Algeria." 
-#>  [7] "Magnus Carlsen  defeats Fabiano Caruana to retain the World Chess Championship."                                                                                
-#>  [8] "... that The Hammer of Thor by Rick Riordan won a Stonewall Book Award for its portrayal of the genderfluid character Alex Fierro?"                             
-#>  [9] "An overloaded tourist ferry capsizes in Lake Toba (pictured), Indonesia, killing at least 3 people and leaving 193 others missing."                             
-#> [10] "1138 – Lý Anh Tông was enthroned as emperor of Đại Việt at the age of two, starting a 37-year reign."
+#>  [1] "1398 – The Grand Duke of Lithuania Vytautas the Great and the Grand Master of the Teutonic Knights Konrad von Jungingen signed the Treaty of Salynas, the third attempt to cede Samogitia to the Knights."
+#>  [2] "... that Cabilao Island is the location of the only natural lake in the Philippine province of Bohol?"                                                                                                    
+#>  [3] "... that the horseshoe shrimp Hutchinsoniella macracantha is the first example of a new class of crustaceans that was given the name Cephalocarida?"                                                      
+#>  [4] "Ngozi Okonjo-Iweala becomes the first woman and the first African to be appointed Director-General of the World Trade Organization."                                                                      
+#>  [5] "A shooting at a gay nightclub in Orlando, Florida, kills 49 people."                                                                                                                                      
+#>  [6] "1840 – Prince Albert (pictured) of Saxe-Coburg and Gotha married Queen Victoria at the Chapel Royal in St James's Palace, London, becoming prince consort."                                               
+#>  [7] "1849 – Abraham Lincoln was issued a patent for an invention to lift boats over obstacles in a river, making him the only U.S. President to ever hold a patent."                                           
+#>  [8] "... that in 1920, Irvin S. Cobb, a writer for The Saturday Evening Post, organized a hunting trip to Oregon looking for a lava bear specimen?"                                                            
+#>  [9] "... that linguist Esther T. Mookini translated many works of 19th-century native Hawaiians, including the 1838 Anatomia, the only medical textbook written in the Hawaiian language?"                     
+#> [10] "1770 – British soldiers fired into a crowd in Boston, Massachusetts, killing five civilians."
 ```
 
 Search Wikipedia (launches browser with results):

@@ -1,7 +1,7 @@
 Package: wikifacts
 Type: Package
 Title: Get Facts and Data from Wikipedia and Wikidata
-Version: 0.4.2
+Version: 0.4.2.9999
 Authors@R: 
     c(person(given = "Keith",
            family = "McNulty",
@@ -15,9 +15,7 @@ Authors@R:
 Description: Query Wikidata and get facts from current and historic Wikipedia main pages.  
 License: CC0
 Encoding: UTF-8
-LazyData: true
 Imports:
-    curl,
     magrittr,
     rvest,
     utils,
