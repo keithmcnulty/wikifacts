@@ -2,7 +2,7 @@ Package: wikifacts
 Type: Package
 Title: Get Facts and Data from Wikipedia and Wikidata
 Version: 0.4.2.9999
-Authors@R: 
+Authors@R:
     c(person(given = "Keith",
            family = "McNulty",
            role = c("aut", "cre"),
@@ -11,8 +11,9 @@ Authors@R:
     person(given = "Petr",
            family = "Kajzar",
            role = c("ctb"),
-           email = "petr.kajzar@centrum.cz"))
-Description: Query Wikidata and get facts from current and historic Wikipedia main pages.  
+           email = "petr.kajzar@centrum.cz",
+           comment = c(ORCID = "0009-0003-4049-3938")))
+Description: Query Wikidata and get facts from current and historic Wikipedia main pages.
 License: CC0
 Encoding: UTF-8
 Imports:
@@ -21,6 +22,6 @@ Imports:
     utils,
     xml2
 RoxygenNote: 7.1.1
-Suggests: 
+Suggests:
     covr,
     testthat
